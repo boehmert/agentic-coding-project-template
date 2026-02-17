@@ -27,13 +27,30 @@ This framework provides:
 
 ## Quick Start
 
-### 1. Copy the `.github` folder to your project
+### Installation
 
-```bash
-cp -r .github /path/to/your/project/
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/Carsten-Boehmert_wkl/copilot-spec-framework/main/install.ps1 | iex
 ```
 
-### 2. Initialize your project
+**macOS / Linux:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/Carsten-Boehmert_wkl/copilot-spec-framework/main/install.sh | bash
+```
+
+**Manual:**
+```bash
+# Clone framework
+git clone https://github.com/Carsten-Boehmert_wkl/copilot-spec-framework.git temp
+# Copy .github folder to your project
+cp -r temp/.github /path/to/your/project/
+rm -rf temp
+```
+
+See [INSTALL.md](INSTALL.md) for detailed installation instructions.
+
+### Initialize your project
 
 ```
 @workspace /prompt repo-bootstrap
@@ -43,7 +60,7 @@ Description: What your project does
 Tech Stack: Python, FastAPI, PostgreSQL
 ```
 
-### 3. Create your first Workorder
+### Create your first Workorder
 
 ```
 @workspace /prompt create-workorder
@@ -52,13 +69,13 @@ Task: Implement user authentication
 Context: Users need to log in to access protected resources
 ```
 
-### 4. Run pre-implementation check
+### Run pre-implementation check
 
 ```
 @workspace /prompt pre-implementation-check WO01
 ```
 
-### 5. Implement with the Developer agent
+### Implement with the Developer agent
 
 ```
 @workspace Use the developer agent to implement WO01.
