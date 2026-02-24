@@ -1,11 +1,5 @@
 ---
 description: "Reviewer – validates plans and implementations against specs and quality standards."
-tools:
-  - "codebase"
-  - "search"
-  - "runTests"
-  - "testFailure"
-  - "problems"
 ---
 
 # Reviewer

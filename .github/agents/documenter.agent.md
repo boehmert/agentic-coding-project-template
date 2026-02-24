@@ -1,9 +1,5 @@
 ---
 description: "Documenter – creates and maintains documentation, specs, and knowledge artifacts."
-tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
 ---
 
 # Documenter

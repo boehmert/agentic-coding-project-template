@@ -161,13 +161,20 @@ python -m pytest
 ## 6. Links and References
 
 ### Internal Links
-```markdown
-See [Workorder Schema](schemas/workorder.schema.md) for details.
-Refer to [Section 2](#section-2) above.
+Use relative paths for internal documentation links.
+
+Example for file references:
+```
+See [Workorder Schema](../schemas/workorder.schema.md) for details.
 ```
 
+Example for anchor links within the same document:
+- Use heading IDs to link to sections in the same file
+- Syntax: Square brackets with link text, followed by parentheses with hash and heading-id
+
 ### External Links
-```markdown
+Example for external URLs:
+```
 Based on [PEP 8](https://pep8.org/) guidelines.
 ```
 

@@ -1,10 +1,5 @@
 ---
 description: "Workorder Planner – creates workorders, defines scope, identifies risks."
-tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
-  - "problems"
 ---
 
 # Workorder Planner

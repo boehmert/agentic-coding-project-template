@@ -101,9 +101,10 @@ ${projectDescription}
 
 ## Documentation
 
-- [Repository State](REPO_STATE.md)
-- [Workorder Catalog](workorders/WO_CATALOG.md)
-- [Architecture Decisions](docs/adr/)
+After bootstrap, the following files will be available:
+- Repository State: `REPO_STATE.md`
+- Workorder Catalog: `workorders/WO_CATALOG.md`
+- Architecture Decisions: `docs/adr/`
 
 ## Development
 
@@ -166,7 +167,7 @@ Central registry of all Workorders in this project.
 
 | ID | Title | Completed | Report |
 |----|-------|-----------|--------|
-| WO00 | Repo Bootstrap | ${date} | [Report](reports/WO00_report_${date}.md) |
+| WO00 | Repo Bootstrap | YYYY-MM-DD | See reports/ directory |
 
 ## Cancelled
 

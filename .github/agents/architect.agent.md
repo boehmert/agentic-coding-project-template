@@ -1,11 +1,5 @@
 ---
 description: "System Architect – designs architecture, makes technology decisions, creates ADRs."
-tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
-  - "fetch"
-  - "problems"
 ---
 
 # Architect

@@ -1,9 +1,5 @@
 ---
 description: "Security Reviewer – analyzes code for security vulnerabilities and compliance."
-tools:
-  - "codebase"
-  - "search"
-  - "problems"
 ---
 
 # Security Reviewer

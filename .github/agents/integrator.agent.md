@@ -1,13 +1,5 @@
 ---
 description: "Integrator – merges branches, resolves conflicts, prepares PRs."
-tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
-  - "runCommands"
-  - "runTests"
-  - "problems"
-  - "testFailure"
 ---
 
 # Integrator

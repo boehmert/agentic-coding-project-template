@@ -1,11 +1,15 @@
 # Spec-Driven Development Framework
 
-[![Framework Version](https://img.shields.io/badge/version-1.0.0-blue.svg)]()
-[![Wolters Kluwer](https://img.shields.io/badge/Wolters%20Kluwer-Internal-orange.svg)]()
+[![Framework Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/wk-dxg/spec-driven-development-framework)
+[![Wolters Kluwer](https://img.shields.io/badge/Wolters%20Kluwer-Internal-orange.svg)](https://github.com/wk-dxg)
+[![GitHub Issues](https://img.shields.io/github/issues/wk-dxg/spec-driven-development-framework)](https://github.com/wk-dxg/spec-driven-development-framework/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/wk-dxg/spec-driven-development-framework)](https://github.com/wk-dxg/spec-driven-development-framework/stargazers)
 
 A structured framework for AI-assisted software development with specialized agents, workorder specifications, and quality gates. Works with GitHub Copilot, Cursor, and other AI coding assistants.
 
 > **Internal Use Only** – This framework is proprietary to Wolters Kluwer.
+
+**Topics:** `copilot` `github-copilot` `ai-assisted-development` `ai-coding` `development-framework` `software-architecture` `workorder` `architecture-decision-records` `adr` `code-quality` `code-review` `spec-driven-development` `ai-agents` `quality-gates` `developer-tools` `devops` `best-practices` `wolters-kluwer`
 
 ## The Problem This Solves
 
@@ -31,18 +35,18 @@ This framework provides:
 
 **Windows (PowerShell):**
 ```powershell
-irm https://raw.githubusercontent.com/Carsten-Boehmert_wkl/copilot-spec-framework/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/wk-dxg/spec-driven-development-framework/main/install.ps1 | iex
 ```
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Carsten-Boehmert_wkl/copilot-spec-framework/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/wk-dxg/spec-driven-development-framework/main/install.sh | bash
 ```
 
 **Manual:**
 ```bash
 # Clone framework
-git clone https://github.com/Carsten-Boehmert_wkl/copilot-spec-framework.git temp
+git clone https://github.com/wk-dxg/spec-driven-development-framework.git temp
 # Copy .github folder to your project
 cp -r temp/.github /path/to/your/project/
 rm -rf temp

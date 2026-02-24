@@ -1,13 +1,5 @@
 ---
 description: "Developer – implements workorders, writes code and tests safely."
-tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
-  - "runCommands"
-  - "runTests"
-  - "problems"
-  - "testFailure"
 ---
 
 # Developer
