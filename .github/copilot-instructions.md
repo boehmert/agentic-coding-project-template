@@ -34,17 +34,24 @@ Every artifact must have clear provenance:
 
 ## 2. Context Management
 
-### 2.1 Required Context at Session Start
-At the start of each session, read:
-1. `REPO_STATE.md` (if exists) – current project state
-2. `workorders/WO_CATALOG.md` – active and completed workorders
-3. Active Workorder file (`workorders/WOxx_*.md`)
-4. Relevant schema files (`schemas/*.md`)
+### 2.1 Mandatory Context Protocol – Session Start
+
+Use the `session-start` prompt (`prompts/session-start.prompt.md`) or follow these steps manually:
+
+| Step | File | What to extract |
+|------|------|-----------------|
+| 1 | `context/ARTIFACT_REGISTRY.md` | Active WO, REVIEW/BLOCKED items, last session date |
+| 2 | `context/SESSION_LOG.md` (last entry only) | Open points, recommendation for this session |
+| 3 | `context/USER_INTENT_LOG.md` (last ACTIVE entry) | Strategic goal, open success criteria |
+| 4 | Active Workorder `workorders/WOxx_*.md` | Remaining deliverables, open DoD items |
+| 5 | `REPO_STATE.md` (if exists) | Current system/branch state |
+
+**Target:** Full orientation in < 5 minutes. Skip steps 1–3 only if the `context/` folder does not yet exist.
 
 ### 2.2 Context Refresh Protocol
 When context becomes stale or confusing:
 1. Stop and summarize current understanding
-2. Re-read key state files (REPO_STATE.md, WO_CATALOG.md)
+2. Re-read `context/ARTIFACT_REGISTRY.md` and last `SESSION_LOG.md` entry
 3. Ask user to confirm or correct your understanding
 4. Continue with refreshed context
 
@@ -52,6 +59,37 @@ When context becomes stale or confusing:
 - Use `codebase` and `search` surgically – load only what you need
 - Prefer summarizing long files over pasting them verbatim
 - Avoid loading large, unrelated parts of the codebase "just in case"
+
+### 2.4 Mandatory Context Protocol – Session End
+
+#### Auto-Trigger: When to proactively write a session recap
+
+You must **proactively** trigger a session recap (without being asked) when any of these conditions are met:
+
+| Trigger | Example |
+|---------|---------|
+| A Workorder deliverable is completed | "Done, all tests pass" |
+| A significant decision was made | ADR, architecture choice, scope change |
+| Files were created or modified | Any non-trivial file change |
+| Approx. every 15–20 turns in a long session | Natural checkpoint |
+| Before switching to a clearly different task domain | "Now let's work on X instead" |
+| User says "session recap", "wrap up", or "log this" | Explicit trigger |
+
+When auto-triggering, say briefly: *"Zwischenspeichern – ich schreibe einen kurzen Session-Eintrag."*
+Then write the entry and continue without interrupting the workflow.
+
+#### What to write
+
+1. **Append** a new entry to `context/SESSION_LOG.md`
+   - Use the `session-recap` prompt (`prompts/session-recap.prompt.md`)
+   - Include: User Intent, Consulted Artifacts, Decisions, Modified Files, Open Points, Recommendation
+2. **Update** `context/ARTIFACT_REGISTRY.md`
+   - Add any newly created artifacts
+   - Change status of completed Workorders to `DONE`
+   - Update `Last Updated` dates
+3. **Offer** to update `context/USER_INTENT_LOG.md` if a strategic goal shifted or was completed
+
+> Rule: Session memory is only as good as what you write down. An unlogged session is a lost session.
 
 ---
 
@@ -153,6 +191,11 @@ After implementing:
 ### Framework Manifest
 - [FRAMEWORK_MANIFEST.md](FRAMEWORK_MANIFEST.md) – Version registry for all framework artifacts
 
+### Context / Session Memory (read first at session start)
+- [context/ARTIFACT_REGISTRY.md](../context/ARTIFACT_REGISTRY.md) – Central artifact index (read first)
+- [context/SESSION_LOG.md](../context/SESSION_LOG.md) – Append-only session history
+- [context/USER_INTENT_LOG.md](../context/USER_INTENT_LOG.md) – Strategic user intent layer
+
 ### Instruction Files
 - [Spec-Driven Rules](instructions/spec-driven.instructions.md)
 - [Python Standards](instructions/python.instructions.md)
@@ -164,6 +207,18 @@ After implementing:
 - [ADR Schema](schemas/adr.schema.md)
 - [Report Schema](schemas/report.schema.md)
 - [Handoff Schema](schemas/handoff.schema.md)
+- [Session Log Schema](schemas/session-log.schema.md)
+- [User Intent Log Schema](schemas/user-intent-log.schema.md)
+- [Artifact Registry Schema](schemas/artifact-registry.schema.md)
+
+### Prompt Files
+- [Session Start](prompts/session-start.prompt.md) – Load context at session start
+- [Session Recap](prompts/session-recap.prompt.md) – Write session log entry at session end
+- [Create Workorder](prompts/create-workorder.prompt.md)
+- [Pre-Implementation Check](prompts/pre-implementation-check.prompt.md)
+- [Create ADR](prompts/create-adr.prompt.md)
+- [Performance Review](prompts/performance-review.prompt.md)
+- [Refactoring Plan](prompts/refactoring-plan.prompt.md)
 
 ### Agent Files
 - [Architect](agents/architect.agent.md)

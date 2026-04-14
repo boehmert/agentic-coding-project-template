@@ -1,11 +1,12 @@
 ---
 framework_name: Spec-Driven Development Framework
-version: 1.0.0
+version: 1.1.0
 status: ACTIVE
 created: 2026-02-06
+updated: 2026-03-03
 created_by: developer
 reviewed_by: pending
-model_used: "Claude Opus 4.5"
+model_used: "Claude Sonnet 4.6"
 ---
 
 # Framework Manifest
@@ -18,11 +19,12 @@ This file tracks provenance and version information for all framework artifacts.
 
 | Field | Value |
 |-------|-------|
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Status** | ACTIVE |
 | **Created** | 2026-02-06 |
+| **Updated** | 2026-03-03 |
 | **Created By** | developer |
-| **Model Used** | Claude Opus 4.5 |
+| **Model Used** | Claude Sonnet 4.6 |
 
 ---
 
@@ -57,6 +59,9 @@ This file tracks provenance and version information for all framework artifacts.
 | adr | `schemas/adr.schema.md` | 1.0.0 | ACTIVE | Architecture decision record format |
 | report | `schemas/report.schema.md` | 1.0.0 | ACTIVE | Workorder completion report format |
 | handoff | `schemas/handoff.schema.md` | 1.0.0 | ACTIVE | Agent-to-agent handoff format |
+| session-log | `schemas/session-log.schema.md` | 1.0.0 | ACTIVE | Session log entry format |
+| user-intent-log | `schemas/user-intent-log.schema.md` | 1.0.0 | ACTIVE | User intent log entry format |
+| artifact-registry | `schemas/artifact-registry.schema.md` | 1.0.0 | ACTIVE | Artifact registry structure |
 
 ### Prompts
 
@@ -68,6 +73,16 @@ This file tracks provenance and version information for all framework artifacts.
 | pre-implementation-check | `prompts/pre-implementation-check.prompt.md` | 1.0.0 | ACTIVE | Validate before implementation |
 | performance-review | `prompts/performance-review.prompt.md` | 1.0.0 | ACTIVE | Analyze performance |
 | refactoring-plan | `prompts/refactoring-plan.prompt.md` | 1.0.0 | ACTIVE | Plan refactoring work |
+| session-start | `prompts/session-start.prompt.md` | 1.0.0 | ACTIVE | Load context at session start |
+| session-recap | `prompts/session-recap.prompt.md` | 1.0.0 | ACTIVE | Write session log entry at session end |
+
+### Context Templates
+
+| ID | File | Version | Status | Description |
+|----|------|---------|--------|-------------|
+| artifact-registry | `../context/ARTIFACT_REGISTRY.md` | 1.0.0 | ACTIVE | Central artifact index (read first) |
+| session-log | `../context/SESSION_LOG.md` | 1.0.0 | ACTIVE | Append-only session history |
+| user-intent-log | `../context/USER_INTENT_LOG.md` | 1.0.0 | ACTIVE | Strategic user intent layer |
 
 ---
 
@@ -75,8 +90,7 @@ This file tracks provenance and version information for all framework artifacts.
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 1.0.0 | 2026-02-06 | developer | Initial framework creation |
-
+| 1.0.0 | 2026-02-06 | developer | Initial framework creation || 1.1.0 | 2026-03-03 | developer | Memory management layer: session-log, user-intent-log, artifact-registry schemas; session-start + session-recap prompts; context/ templates; copilot-instructions mandatory context protocol |
 ---
 
 ## Update Protocol
