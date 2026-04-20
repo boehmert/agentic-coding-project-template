@@ -42,7 +42,7 @@ Lese die angegebene Datei vollständig.
 
 **Sofort prüfen:**
 - Enthält die Datei personenbezogene Daten (Namen, E-Mail-Adressen außer Users)? → Anonymisieren oder hinweisen
-- Enthält sie interne WK-Daten, die nicht in Git gehören? → `status: draft` + Hinweis an User
+- Enthält sie interne Daten, die nicht in Git gehören? → `status: draft` + Hinweis an User
 
 ### 2. Snippet-Kandidaten identifizieren
 

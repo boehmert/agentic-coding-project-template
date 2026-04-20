@@ -1,6 +1,6 @@
 ---
 name: rdf-shacl
-description: "RDF/SHACL-Arbeits-Skill: Serialisierungsformate, SHACL-Shape-Grundstruktur, Workspace-Tools und MACK-spezifische Konventionen. Aktiviert bei RDF, SHACL, Turtle, Shape, Triple, Graph-Arbeit."
+description: "RDF/SHACL Working Skill: Serialization formats, SHACL shape syntax, workspace tools, and domain conventions. Activated for RDF, SHACL, Turtle, Shape, Triple, Graph work."
 metadata:
   trigger: RDF, SHACL, Turtle, Shape, Triple, Graph, rdflib, pyshacl, Validation, N-Triples, JSON-LD
   author: Author
@@ -8,7 +8,7 @@ metadata:
 
 # RDF & SHACL Working Knowledge
 
-Praxiswissen für die Arbeit mit RDF-Graphen und SHACL-Validierung im PROJECT-/MACK-Kontext.
+Practical knowledge for working with RDF graphs and SHACL validation.
 
 ---
 
@@ -16,7 +16,7 @@ Praxiswissen für die Arbeit mit RDF-Graphen und SHACL-Validierung im PROJECT-/M
 
 | Format | Endung | Beschreibung | Einsatz im Workspace |
 |---|---|---|---|
-| **Turtle** | `.ttl` | Terse RDF Triple Language — menschenlesbar | Primärformat für PROJECT-Daten und Shapes |
+| **Turtle** | `.ttl` | Terse RDF Triple Language — menschenlesbar | Primary format for RDF data and shapes |
 | **JSON-LD** | `.jsonld` | JSON für Linked Data | API-Austausch, Web-Integration |
 | **N-Triples** | `.nt` | Ein Triple pro Zeile — maschinell einfach | Bulk-Import/Export |
 | **RDF/XML** | `.rdf`, `.xml` | XML-Serialisierung | Legacy-Systeme |
@@ -32,15 +32,15 @@ Praxiswissen für die Arbeit mit RDF-Graphen und SHACL-Validierung im PROJECT-/M
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix pcicore: <http://purl.org/pcicore/> .
+@prefix ex:      <http://example.org/ontology/> .
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 
 # Subject — Predicate — Object
 <http://example.org/work/123>
-    rdf:type           pcicore:Work ;
+    rdf:type           ex:Work ;
     dcterms:title      "Beispieldokument"@de ;
     dcterms:language   "nl" ;
-    pcicore:hasSubject <http://example.org/subject/tax> .
+    ex:hasSubject <http://example.org/subject/tax> .
 ```
 
 **Syntax-Regeln:**
@@ -55,12 +55,12 @@ Praxiswissen für die Arbeit mit RDF-Graphen und SHACL-Validierung im PROJECT-/M
 
 ```turtle
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
-@prefix pcicore: <http://purl.org/pcicore/> .
+@prefix ex:      <http://example.org/ontology/> .
 
 # Shape-Definition
-pcicore:WorkShape
+ex:WorkShape
     a sh:NodeShape ;
-    sh:targetClass pcicore:Work ;
+    sh:targetClass ex:Work ;
     sh:property [
         sh:path     dcterms:title ;
         sh:minCount 1 ;
@@ -69,7 +69,7 @@ pcicore:WorkShape
         sh:message  "Work muss genau einen Titel haben" ;
     ] ;
     sh:property [
-        sh:path     pcicore:hasSubject ;
+        sh:path     ex:hasSubject ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:message  "Work muss mindestens ein Subject haben" ;
@@ -84,10 +84,10 @@ pcicore:WorkShape
 | `sh:maxCount` | Maximalanzahl | `sh:maxCount 1` (nur ein Wert) |
 | `sh:datatype` | Erwarteter Datentyp | `sh:datatype xsd:string` |
 | `sh:nodeKind` | Art des Knotens | `sh:nodeKind sh:IRI` (muss URI sein) |
-| `sh:class` | Erwartete Klasse | `sh:class pcicore:Subject` |
+| `sh:class` | Erwartete Klasse | `sh:class ex:Subject` |
 | `sh:in` | Erlaubte Werte | `sh:in ("nl" "be" "de")` |
 | `sh:pattern` | Regex-Pattern | `sh:pattern "^[A-Z]{2}-"` |
-| `sh:hasValue` | Muss diesen Wert haben | `sh:hasValue pcicore:Work` |
+| `sh:hasValue` | Muss diesen Wert haben | `sh:hasValue ex:Work` |
 | `sh:or` | Eins von mehreren | `sh:or ( [...] [...] )` |
 
 ---
@@ -126,28 +126,29 @@ pyshacl  – pip install pyshacl
 
 ---
 
-## 5. PROJECT-/MACK-spezifische Konventionen
+## 5. Domain-Specific Conventions
 
-### Namespace-Prefixes
+Replace this section with your project's RDF/SHACL conventions.
 
-| Prefix | URI | Verwendung |
+### Namespace-Prefixes (Example)
+
+| Prefix | URI | Usage |
 |---|---|---|
-| `pcicore:` | `http://purl.org/pcicore/` | PROJECT-Kernontologie |
+| `ex:` | `http://example.org/` | Your domain namespace |
 | `dcterms:` | `http://purl.org/dc/terms/` | Dublin Core Terms |
 | `skos:` | `http://www.w3.org/2004/02/skos/core#` | Controlled Vocabularies |
-| `frbr:` | `http://purl.org/vocab/frbr/core#` | FRBR-Modell |
 
-### Shape-Organisation
-- Shapes pro FRBR-Level: `work_shape.ttl`, `expression_shape.ttl`
-- 334 Shapes über 8 Dateien (Stand PROJECT- 6.x)
-- Neue Shapes: Naming-Konvention `{entity}Shape` (PascalCase)
+### Shape Organisation
+- One shape file per domain entity
+- Naming: `{entity}_shape.ttl` (snake_case)
+- New shapes follow `{Entity}Shape` naming convention (PascalCase)
 
-### Validierungs-Workflow
+### Validation Workflow
 ```text
-1. Daten-Graph laden:   load_graph("inbox/rdf-shacl/data.ttl")
-2. Shape-Graph laden:   (automatisch erkannt per Namensmuster)
-3. Validieren:          validate_shacl(data_path, shapes_path)
-4. Report generieren:   output/reports/validation_report.md
+1. Load data graph:   load_graph("inbox/rdf-shacl/data.ttl")
+2. Load shape graph:  (auto-detected by filename pattern)
+3. Validate:          validate_shacl(data_path, shapes_path)
+4. Generate report:   output/reports/validation_report.md
 ```
 
 ---
@@ -156,8 +157,6 @@ pyshacl  – pip install pyshacl
 
 | Thema | Pfad |
 |---|---|
-| PROJECT-Datenmodell | `context/PROJECT-/Team-Meta-01_PROJECT-Platform.md` |
-| SHACL-Validation Details | `context/PROJECT-/Team-Meta-04_QA-Testing.md` |
 | Terminologie-Glossar | `_tools/validate/glossary.yaml` |
 | SHACL W3C Spec | `https://www.w3.org/TR/shacl/` |
 

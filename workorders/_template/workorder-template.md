@@ -51,7 +51,7 @@ confluence: ""
 
 **Related Workday Goal(s):**
 <!-- Select one or more: Goal 1 | Goal 2 | Goal 3 | Goal 4 | Goal 5
-     See /governance/workday-goals-2026.md for full goal texts. -->
+     See /governance/workday-goals.md for full goal texts. -->
 
 **Adoption:**
 <!-- How will this output be adopted by others? Who else will use it?
@@ -70,7 +70,7 @@ confluence: ""
 <!-- Before closing this workorder, confirm: -->
 
 - [ ] Output is factually correct and plausible
-- [ ] PROJECT/MACK terminology consistent (if applicable)
+- [ ] Domain terminology consistent (if applicable)
 - [ ] Usable by the intended audience without asking the team
 - [ ] Stored in the right location (output/, Confluence, Jira)
 - [ ] Linked to a Jira issue or planning document

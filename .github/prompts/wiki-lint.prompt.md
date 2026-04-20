@@ -31,7 +31,7 @@ Lese 10-15 Snippets (bevorzugt ältere und solche mit `status: draft`) und prüf
 - Können sie zusammengeführt werden?
 
 **Aktualitäts-Check:**
-- Sind Fakten noch korrekt? (z.B. Framework-Versionen, WK-Prozesse)
+- Sind Fakten noch korrekt? (z.B. Framework-Versionen, Team-Prozesse)
 - Snippets älter als 6 Monate mit `status: draft` → auf `outdated` setzen?
 
 **Konsistenz-Check:**

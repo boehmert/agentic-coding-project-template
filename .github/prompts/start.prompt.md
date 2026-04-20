@@ -28,12 +28,12 @@ Ordne die Aufgabe einer oder mehreren Kategorien zu:
 
 | Kategorie | Schlüsselwörter |
 |---|---|
-| Jira | Ticket, Issue, Backlog, DoR, Sprint, PROJECT-, MACK-, Team- |
+| Jira | Ticket, Issue, Backlog, DoR, Sprint |
 | Confluence | Seite, Space, Doku, Wiki, Audit |
 | Dokument | Review, Analyse, Spezifikation, ADR, Workorder |
 | Text/Schreiben | Formulieren, Schreiben, E-Mail, Kommentar, Zusammenfassung |
 | Code | Python, Script, Task, Tool, `_tools/`, `tasks/` |
-| Strategie/Kontext | Team-, PI, Ziele, Roadmap, Workday Goals |
+| Strategie/Kontext | PI, Ziele, Roadmap, Workday Goals |
 | Wissenssuche | Suchen, Finden, Nachschlagen (intern) |
 
 ## Schritt 2: Passende Ressourcen prüfen
@@ -44,14 +44,12 @@ Ordne die Aufgabe einer oder mehreren Kategorien zu:
 |---|---|
 | `/jira-review` | Jira-Ticket auf DoR + Template prüfen |
 | `/jira-enhance-to-dor` | Unvollständiges Ticket auf DoR-Niveau bringen |
-| `/PROJECT-ticket-analysis` | PROJECT-Tickets analysieren und strukturieren |
 | `/document-review` | Dokument, Spezifikation oder Anforderung reviewen |
-| `/confluence-space-audit` | Team-/PROJECT- Confluence-Spaces auditieren |
+| `/confluence-space-audit` | Confluence-Spaces auditieren |
 | `/create-workorder` | Neue Workorder-Spezifikation erstellen |
 | `/meeting-summary` | Strukturierte Meeting-Zusammenfassung erstellen |
 | `/document-comparison` | Dokument-Vergleich und Gap-Analyse |
 | `/requirements-analysis` | Anforderungen auf Vollständigkeit und Testbarkeit prüfen |
-| `/Team-strategy-context` | Team- North Star & Strategie-Kontext laden |
 | `/workday-goal-awareness` | Aufgabe gegen Workday Goals 2026 abgleichen |
 | `/cognitive-continuity-context-transfer` | Kontext zwischen Sessions übertragen |
 | `/save-session` | Ergebnisse + Denkprozess für nächste Session speichern |
@@ -66,7 +64,7 @@ Ordne die Aufgabe einer oder mehreren Kategorien zu:
 
 ### Vault Knowledge Base (MCP: `vault-mcp`)
 
-Bei Fragen zu PROJECT-, MACK, SHACL, Team-Prozessen, Spec-Driven Development oder Users Portfolio **zuerst den Vault durchsuchen** (`vault_search` / `vault_context`), bevor Confluence oder Jira angesteuert werden.
+Bei Fragen zu SHACL, Spec-Driven Development oder domänenspezifischen Themen **zuerst den Vault durchsuchen** (`vault_search` / `vault_context`), bevor Confluence oder Jira angesteuert werden.
 
 ### Verfügbare Agents (`@`-Befehle)
 
@@ -84,8 +82,8 @@ Bei Fragen zu PROJECT-, MACK, SHACL, Team-Prozessen, Spec-Driven Development ode
 |---|---|
 | `response-style` | Alle Antworten — Sprache, Struktur, Ton |
 | `spec-driven` | Workorders, ADRs, Reports — Frontmatter + Versioning |
-| `wk-jira` | Alle Jira-Aktionen via MCP |
-| `wk-confluence` | Alle Confluence-Aktionen via MCP |
+| `jira-integration` | Alle Jira-Aktionen via MCP |
+| `confluence-integration` | Alle Confluence-Aktionen via MCP |
 | `python` | Alle `.py`-Dateien |
 | `markdown` | Alle `.md`-Dateien |
 | `context-engineering` | Generelle Copilot-Kontextregeln |
@@ -96,8 +94,8 @@ Bei Fragen zu PROJECT-, MACK, SHACL, Team-Prozessen, Spec-Driven Development ode
 Gib eine kurze Empfehlung:
 
 - **Passen Prompts zur Aufgabe?** → Nenne sie. Frage: "Soll ich mit `/prompt-name` arbeiten?"
-- **Brauchen wir Domänenwissen (PROJECT-/MACK/Team-)?** → Vault zuerst (`vault_search`), dann Confluence/Jira
-- **Brauchen wir Kontext aus Jira/Confluence?** → Hinweis auf `knowledge-retrieval` + `wk-jira`/`wk-confluence`
+- **Brauchen wir Domänenwissen?** → Vault zuerst (`vault_search`), dann Confluence/Jira
+- **Brauchen wir Kontext aus Jira/Confluence?** → Hinweis auf `knowledge-retrieval` + Jira/Confluence MCP
 - **Ist Text für User zu formulieren?** → `schreibstil`-Skill aktivieren
 - **Nichts passt** → Direkt starten, Pfad und Ausgabeort nennen
 

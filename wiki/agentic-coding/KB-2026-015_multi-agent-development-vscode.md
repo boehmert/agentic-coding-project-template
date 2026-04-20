@@ -68,13 +68,13 @@ Security         → vulnerability scan only
 Documenter       → write to output/ only
 ```
 
-Handoffs zwischen Agents via `handoff.schema.md` (im WK SDD Framework vorhanden).
+Handoffs zwischen Agents via `handoff.schema.md` (in diesem Framework vorhanden).
 
 ### MCP Apps (Generally Available)
 
 MCP-Tool-Aufrufe können interaktive UI-Komponenten zurückgeben (Dashboards, Formulare, Multi-Step-Workflows) — direkt im Chat sichtbar. Nicht nur Text-Responses.
 
-## Relevanz für Team-
+## Relevanz für diesen Workspace
 
 Der Agentic Workspace implementiert das Pattern bereits:
 - `runSubagent` im `copilot-instructions.md` konfiguriert

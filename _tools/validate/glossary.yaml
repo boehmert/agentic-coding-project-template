@@ -64,139 +64,24 @@ Sprint:
   category: process
 
 # --- Add your project-specific terms below ---
-# Example:
+# Replace these examples with your project's domain terminology.
+#
+# MyPlatform:
+#   canonical: "MyPlatform"
+#   variants: ["myplatform", "my-platform"]
+#   description: "Your content platform name"
+#   category: platform
+#
+# MyPipeline:
+#   canonical: "MyPipeline"
+#   variants: ["mypipeline", "my-pipeline"]
+#   description: "Your data transformation pipeline"
+#   category: pipeline
+#
 # MyProduct:
 #   canonical: "MyProduct"
 #   variants: ["myproduct", "my-product"]
-#   description: "Our main product"
+#   description: "Your main product"
 #   category: product
-# Project Terminology Glossary
-#
-# Kanonische Begriffe für Terminologie-Konsistenz-Checks.
-# Format: term → Liste akzeptierter Varianten (case-insensitive).
-# Quelle: context/project/meta-files
-#
-# Pflege: Neue Begriffe ergänzen wenn Terminologie-Drift erkannt wird.
-# Siehe: _tools/validate/terminology_check.py
-
-# --- Project Platform ---
-PROJECT:
-  canonical: "PROJECT"
-  variants: ["Project", "project"]
-  description: "Content Repository Platform"
-  category: platform
-
-MACK:
-  canonical: "MACK"
-  variants: ["Mack", "mack"]
-  description: "Metadata Aggregation, Classification & Knowledge extraction pipeline"
-  category: pipeline
-
-Data-Pipeline:
-  canonical: "Data-Pipeline"
-  variants: ["Data-Pipeline", "Data-Pipeline", "Data-Pipeline", "any-2-mack"]
-  description: "Konvertierungspipeline: beliebiges Format → MACK-konforme Metadaten"
-  category: pipeline
-
-InfoType:
-  canonical: "InfoType"
-  variants: ["Infotype", "info type", "Info Type", "info-type"]
-  description: "Informationstyp (z.B. Legislation, Commentary, Case Law)"
-  category: taxonomy
-
-# --- Semantic/RDF ---
-SHACL:
-  canonical: "SHACL"
-  variants: ["Shacl", "shacl"]
-  description: "Shapes Constraint Language (W3C)"
-  category: standard
-
-RDF:
-  canonical: "RDF"
-  variants: ["rdf", "Rdf"]
-  description: "Resource Description Framework"
-  category: standard
-
-Turtle:
-  canonical: "Turtle"
-  variants: ["turtle", "TTL", "ttl", ".ttl"]
-  description: "Terse RDF Triple Language (Serialisierungsformat)"
-  category: format
-
-JSON-LD:
-  canonical: "JSON-LD"
-  variants: ["json-ld", "Json-LD", "jsonld", "JSONLD"]
-  description: "JSON for Linked Data"
-  category: format
-
-# --- Knowledge Graph ---
-GRS:
-  canonical: "GRS"
-  variants: ["grs", "Grs"]
-  description: "Global Reference Store"
-  category: system
-
-GAMMA:
-  canonical: "GAMMA"
-  variants: ["Gamma", "gamma"]
-  description: "Global Asset Metadata Management Architecture"
-  category: architecture
-
-Knowledge_Graph:
-  canonical: "Knowledge Graph"
-  variants: ["knowledge graph", "KG", "kg"]
-  description: "Wissens-Graph für semantische Verknüpfungen"
-  category: concept
-
-# --- Controlled Vocabularies ---
-Controlled_Vocabulary:
-  canonical: "Controlled Vocabulary"
-  variants: ["controlled vocabulary", "CV", "cv"]
-  description: "Kontrolliertes Vokabular für konsistente Klassifikation"
-  category: concept
-
-Taxonomy:
-  canonical: "Taxonomie"
-  variants: ["taxonomy", "Taxonomy"]
-  description: "Hierarchisches Klassifikationssystem"
-  category: concept
-
-Ontology:
-  canonical: "Ontologie"
-  variants: ["ontology", "Ontology"]
-  description: "Formales Domänenmodell mit Klassen, Properties und Constraints"
-  category: concept
-
-# --- Process ---
-DoR:
-  canonical: "Definition of Ready"
-  variants: ["DoR", "dor", "Definition of ready"]
-  description: "Kriterien für Ticket-Bereitschaft"
-  category: process
-
-PI:
-  canonical: "Program Increment"
-  variants: ["PI", "pi", "Program increment"]
-  description: "SAFe Program Increment (Planungszeitraum)"
-  category: process
-
-Sprint:
-  canonical: "Sprint"
-  variants: ["sprint", "Iteration"]
-  description: "2-Wochen-Entwicklungszyklus"
-  category: process
-
-# --- AI/RAG ---
-RAG:
-  canonical: "RAG"
-  variants: ["rag", "Rag"]
-  description: "Retrieval-Augmented Generation"
-  category: concept
-
-Expy:
-  canonical: "Expy"
-  variants: ["expy", "EXPY"]
-  description: "WK Expert AI Assistant"
-  category: product
 
 

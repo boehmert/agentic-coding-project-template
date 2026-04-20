@@ -32,7 +32,7 @@ Usage
     from _tools.documents.converter import to_markdown, convert_directory
     from pathlib import Path
 
-    out = to_markdown(Path("inbox/jira/PROJECT-1280.doc"), Path("output/context"))
+    out = to_markdown(Path("inbox/jira/TICKET-1280.doc"), Path("output/context"))
     print(f"Written: {out}")
 
     convert_directory(Path("inbox/jira"), Path("output/context"))

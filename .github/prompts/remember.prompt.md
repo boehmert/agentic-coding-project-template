@@ -12,7 +12,7 @@ Ziel: Erkenntnisse aus Sessions so festhalten, dass sie in zukünftigen Gespräc
 | Scope | Pfad | Wann |
 |-------|------|------|
 | **User** | `/memories/` | Cross-Workspace: Tool-Patterns, Copilot-Verhalten, allgemeine Erkenntnisse |
-| **Repo** | `/memories/repo/` | Workspace-spezifisch: PROJECT-/MACK-Patterns, MCP-Eigenheiten, Prozesse |
+| **Repo** | `/memories/repo/` | Workspace-spezifisch: Domain-Patterns, MCP-Eigenheiten, Prozesse |
 | **Session** | `/memories/session/` | Nur diese Konversation: Task-Kontext, Zwischenstände |
 
 Standard-Scope: **repo** (workspace-spezifisch).
@@ -23,22 +23,21 @@ Standard-Scope: **repo** (workspace-spezifisch).
 /remember [>domain] [scope] Beschreibung der Erkenntnis
 ```
 
-- `>domain` — Optional. Ziel-Domain (z.B. `>mcp`, `>PROJECT-`, `>python`). Ohne: automatisch zuordnen.
+- `>domain` — Optional. Ziel-Domain (z.B. `>mcp`, `>your-project`, `>python`). Ohne: automatisch zuordnen.
 - `scope` — Optional. `user`, `repo`, `session`. Standard: `repo`.
 - Rest — Die Erkenntnis.
 
 **Beispiele:**
-- `/remember >mcp wk-confluence MCP hat token-refresh-Probleme bei Spaces mit OAuth`
+- `/remember >mcp your-confluence MCP hat token-refresh-Probleme bei Spaces mit OAuth`
 - `/remember >python user pathlib immer relativ zum Workspace-Root verwenden`
-- `/remember Die DoR-Prüfung braucht immer Kontext aus Team-Meta-05`
+- `/remember Die DoR-Prüfung braucht immer Kontext aus dem Team-Prozess-Dokument`
 
 ## Domains
 
 | Domain | Dateiname | Typische Inhalte |
 |--------|-----------|------------------|
 | `mcp` | `mcp-memory.md` | MCP-Server-Eigenheiten, Token-Probleme, Workarounds |
-| `PROJECT-` | `PROJECT-memory.md` | PROJECT-Plattform-Patterns, Ticket-Konventionen, SHACL |
-| `mack` | `mack-memory.md` | Data-Pipeline-Pipeline, Datenformate, Validierung |
+| `your-project` | `your-project-memory.md` | Domain-Patterns, Ticket-Konventionen, Validierung |
 | `jira` | `jira-memory.md` | DoR-Patterns, Ticket-Probleme, Workflow-Erfahrungen |
 | `confluence` | `confluence-memory.md` | Seitenstrukturen, CQL-Tricks, Space-Konventionen |
 | `python` | `python-memory.md` | Code-Patterns, Bibliotheken, Debugging |
@@ -87,7 +86,7 @@ Nach dem Speichern kurz bestätigen:
 ```
 ✓ Gespeichert in /memories/repo/mcp-memory.md
   Domain: MCP | Scope: repo
-  "wk-confluence Token-Refresh bei OAuth-Spaces"
+  "your-confluence Token-Refresh bei OAuth-Spaces"
 ```
 
 

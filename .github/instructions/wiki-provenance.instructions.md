@@ -15,7 +15,7 @@ Jede Wiki-Datei muss diese YAML-Felder enthalten:
 ---
 id: KB-YYYY-NNN                  # Pflicht. Format: KB-{Jahr}-{3-stellige Nummer}
 title: "Exakter Titel"            # Pflicht. Entspricht H1 im Dokument
-domain: agentic-coding            # Pflicht. Werte: agentic-coding | PROJECT- | mack | Team-process | personal
+domain: agentic-coding            # Pflicht. Werte: agentic-coding | your-project | your-domain | team-process | personal
 source_type: llm-generated        # Pflicht. Werte: human | llm-generated | deep-research | meeting-extract | jira-export
 confidence: medium                # Pflicht. Werte: high | medium | low | uncertain
 created: YYYY-MM-DD               # Pflicht. ISO-Datum

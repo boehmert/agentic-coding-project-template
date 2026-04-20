@@ -147,7 +147,7 @@ Jeder Satz braucht ein Subjekt, das handelt.
 ## 6. Operative Regeln
 
 1. **Semantische Dichte:** Kein Satz ohne neuen Informationsgehalt.
-2. **Vorausgesetztes Wissen:** PROJECT-, MACK, SHACL, Semantik werden nie erklärt.
+2. **Vorausgesetztes Wissen:** Domain-spezifische Begriffe, SHACL, Semantik werden nie erklärt.
 3. **Logik vor Rhetorik:** Gedanken durch Inhalt verbinden, nicht durch Konjunktionen wie „zudem" oder „darüber hinaus".
 4. **Realismus:** In informellen Texten darf „Imperfection" einfließen (Zeitnot, Müdigkeit).
 5. **Self-Correction:** Entwurf auf KI-Glätte prüfen. Direktere Verben und unregelmäßige Satzlängen einsetzen.

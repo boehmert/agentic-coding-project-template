@@ -46,7 +46,7 @@ from _tools.documents.converter import to_markdown, convert_directory
 from pathlib import Path
 
 # Einzelne Datei
-out = to_markdown(Path("inbox/jira/PROJECT-1280.doc"), Path("output/context"))
+out = to_markdown(Path("inbox/jira/TICKET-1280.doc"), Path("output/context"))
 
 # Ganzes Verzeichnis
 convert_directory(Path("inbox/jira"), Path("output/context"))

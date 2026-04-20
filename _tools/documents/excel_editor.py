@@ -25,7 +25,7 @@ Verwendung
 >>> from _tools.documents.excel_editor import open_workbook, find_rows, update_row, save_workbook
 >>> wb, ws = open_workbook("meine_datei.xlsx")
 >>> header = get_header_map(ws)
->>> rows = find_rows(ws, header, lambda r: r.get("Feature") == "MACK Abstract")
+>>> rows = find_rows(ws, header, lambda r: r.get("Feature") == "Example Feature")
 >>> update_row(ws, rows[0], header, {"sh:targetClass": "frbr:Expression"})
 >>> save_workbook(wb, "meine_datei.xlsx", suffix="_updated")
 """

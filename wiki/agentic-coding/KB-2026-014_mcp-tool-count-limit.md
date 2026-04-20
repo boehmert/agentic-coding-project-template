@@ -48,8 +48,8 @@ Der Workspace hat 5 MCP-Server:
 
 | Server | Geschätzte Tool-Anzahl |
 |---|---|
-| wk-jira | ~15–20 |
-| wk-confluence | ~15–20 |
+| your-jira | ~15–20 |
+| your-confluence | ~15–20 |
 | microsoft-graph (gateway mode) | ~30–40 |
 | retrieve | ~5–8 |
 | vault-mcp | ~5 |
@@ -63,13 +63,13 @@ Der Workspace hat 5 MCP-Server:
 3. **Selektives Aktivieren**: Nur benötigte MCP-Server für eine Session aktivieren
 4. **Tool-Batching in Prompts**: Mehrere Tool-Calls in einer Anweisung statt einzeln
 
-## Relevanz für Team-
+## Relevanz für diesen Workspace
 
 Wenn Copilot in komplexen Sessions träge wirkt oder falsche Tools auswählt, ist Tool-Count-Degradation ein möglicher Faktor. Diagnose: In VS Code → Chat → `...` → "Show Agent Debug Logs" prüfen wie viele Tools aktiv sind.
 
 ## Quellen
 
-- [MCP (DXDP Confluence)](https://your-confluence-instance.example.com)
-- [Challenges with MCP & Workarounds (DXDP)](https://your-confluence-instance.example.com)
+- VS Code Copilot Documentation: MCP Servers
+- MCP Protocol Spec (modelcontextprotocol.io)
 
 

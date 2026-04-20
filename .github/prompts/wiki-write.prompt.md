@@ -21,11 +21,11 @@ Verwende diesen Prompt wenn eine Erkenntnis:
 /wiki-write [domain] [Titel]
 ```
 
-**Domains:** `agentic-coding` | `PROJECT-` | `mack` | `Team-process` | `personal`
+**Domains:** `agentic-coding` | `your-project` | `your-domain` | `team-process` | `personal`
 
 **Beispiele:**
 - `/wiki-write agentic-coding Vibe Engineering Zutaten (Caudal)`
-- `/wiki-write PROJECT- SHACL Validierungspattern für Controlled Vocabularies`
+- `/wiki-write your-project SHACL Validierungspattern für Controlled Vocabularies`
 
 ---
 

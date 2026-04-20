@@ -88,11 +88,11 @@ applyTo: "**/*.py"
 - Nur Tools listen, die der Agent tatsächlich braucht
 - Read-only Agents: `read/readFile`, `search/*`, `web/fetch`
 - Write-Agents: zusätzlich `edit/editFiles`, `execute/runInTerminal`
-- MCP-Tools: `wk-jira/*`, `wk-confluence/*` nur wenn Jira/Confluence-Zugriff nötig
+- MCP-Tools: `your-jira/*`, `your-confluence/*` nur wenn Jira/Confluence-Zugriff nötig
 
 ### Kontext-Management
 - Relevante Workspace-Dateien im Agent-Body referenzieren (nicht im Frontmatter)
-- `context/PROJECT-/`, `context/mack/` für Domänenwissen
+- `context/your-project/`, `context/your-domain/` für Domänenwissen
 - `context/team/dor/` für Prozesswissen
 
 ---

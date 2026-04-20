@@ -1,5 +1,5 @@
 """
-Terminologie-Konsistenz-Check für PROJECT/MACK-Dokumente
+Terminologie-Konsistenz-Check für Markdown-Dokumente
 =======================================================
 Prüft Markdown-Dateien auf korrekte Verwendung kanonischer Begriffe.
 
@@ -141,7 +141,7 @@ def main() -> int:
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="PROJECT/MACK Terminologie-Konsistenz-Check",
+        description="Terminology consistency check for Markdown documents",
     )
     parser.add_argument(
         "--path", type=Path, default=Path("output"),
