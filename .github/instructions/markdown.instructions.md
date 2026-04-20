@@ -2,6 +2,7 @@
 name: Markdown Standards
 description: Standards for Markdown documentation files.
 applyTo: "**/*.md"
+priority: optional
 ---
 
 # Markdown Standards
@@ -161,20 +162,13 @@ python -m pytest
 ## 6. Links and References
 
 ### Internal Links
-Use relative paths for internal documentation links.
-
-Example for file references:
+```markdown
+See [Workorder Schema](schemas/workorder.schema.md) for details.
+Refer to [Section 2](#section-2) above.
 ```
-See [Workorder Schema](../schemas/workorder.schema.md) for details.
-```
-
-Example for anchor links within the same document:
-- Use heading IDs to link to sections in the same file
-- Syntax: Square brackets with link text, followed by parentheses with hash and heading-id
 
 ### External Links
-Example for external URLs:
-```
+```markdown
 Based on [PEP 8](https://pep8.org/) guidelines.
 ```
 
@@ -309,3 +303,4 @@ For versioned documents, include at the end:
 | 1.0.0 | 2026-02-06 | @author | Initial version |
 | 1.1.0 | 2026-02-07 | @author | Added section X |
 ```
+

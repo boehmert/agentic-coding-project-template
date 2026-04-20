@@ -222,3 +222,4 @@ Handoffs are typically:
 - **Embedded in reports**: As part of WO completion report
 
 For audit trails, consider persisting handoffs in the `handoffs/` directory.
+

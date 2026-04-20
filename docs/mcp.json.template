@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "vault-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@anthropic/vault-mcp-server"
+      ],
+      "env": {
+        "VAULT_PATH": "${workspaceFolder}/vault"
+      }
+    }
+  }
+}

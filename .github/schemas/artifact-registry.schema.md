@@ -142,3 +142,4 @@ ARTIFACT_REGISTRY.md ──points to──► All other artifacts
 ```
 
 The registry is a **navigation index**, not a replacement for any of these files.
+

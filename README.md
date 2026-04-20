@@ -1,232 +1,243 @@
-# Spec-Driven Development Framework
+# Agentic Coding Project Template
 
-[![Framework Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/wk-dxg/spec-driven-development-framework)
-[![Wolters Kluwer](https://img.shields.io/badge/Wolters%20Kluwer-Internal-orange.svg)](https://github.com/wk-dxg)
-[![GitHub Issues](https://img.shields.io/github/issues/wk-dxg/spec-driven-development-framework)](https://github.com/wk-dxg/spec-driven-development-framework/issues)
-[![GitHub Stars](https://img.shields.io/github/stars/wk-dxg/spec-driven-development-framework)](https://github.com/wk-dxg/spec-driven-development-framework/stargazers)
-
-A structured framework for AI-assisted software development with specialized agents, workorder specifications, and quality gates. Works with GitHub Copilot, Cursor, and other AI coding assistants.
-
-> **Internal Use Only** – This framework is proprietary to Wolters Kluwer.
-
-**Topics:** `copilot` `github-copilot` `ai-assisted-development` `ai-coding` `development-framework` `software-architecture` `workorder` `architecture-decision-records` `adr` `code-quality` `code-review` `spec-driven-development` `ai-agents` `quality-gates` `developer-tools` `devops` `best-practices` `wolters-kluwer`
+A comprehensive framework for AI-assisted software development with specialized agents, structured workflows, knowledge management, and quality gates. Works with GitHub Copilot, Cursor, and other AI coding assistants.
 
 ## The Problem This Solves
 
-AI coding assistants are powerful but can produce code that is **"70% right"** – almost correct, but with subtle issues in edge cases, error handling, or architecture alignment. This framework addresses that by:
+AI coding assistants are powerful but can produce code that is **"70% right"** — almost correct, but with subtle issues in edge cases, error handling, or architecture alignment. This framework addresses that by:
 
-- ✅ **Requiring specs before code** – No implementation without clear scope
-- ✅ **Enforcing quality checks** – Validation before and after implementation
-- ✅ **Specializing agents** – Each agent has focused responsibilities
-- ✅ **Tracking provenance** – Every artifact has version, author, and history
+- **Requiring specs before code** — No implementation without clear scope
+- **Enforcing quality checks** — Validation before and after implementation
+- **Specializing agents** — Each agent has focused responsibilities
+- **Managing knowledge** — wiki/ system with provenance tracking
+- **Preserving context** — Session continuity across conversations
+- **Tracking provenance** — Every artifact has version, author, and history
 
-## Overview
+## What's Included
 
-This framework provides:
-- **7 Specialized Agents** with clear roles and responsibilities
-- **Structured Specifications** (Workorders, ADRs, Reports)
-- **Quality Gates** (Pre-implementation check, Review)
-- **Clear Handoffs** between agents with context preservation
-- **Provenance Tracking** via FRAMEWORK_MANIFEST.md
+### Layer 1: Spec-Driven Development (Foundation)
+From the original [vibecoding-project-template](https://github.com/boehmert/vibecoding-project-template):
+- 12 specialized agents (architect, developer, reviewer, etc.)
+- Workorder and ADR schemas with versioning
+- Pre-implementation checks and quality gates
+- Structured handoff protocols between agents
+
+### Layer 2: Knowledge Management (Advanced)
+- **wiki/ system** — LLM-generated knowledge snippets with provenance frontmatter
+- **Vault integration** — Obsidian Vault via MCP server for persistent knowledge
+- **Validation pipeline** — Frontmatter, terminology, and AI-style checks
+- **AI content detection** — Stylometric analysis to identify AI-generated text
+
+### Layer 3: Session Continuity
+- **Memory system** — Three scopes: user, session, repository
+- **Active context** — Automatic session state preservation (`/save-session`)
+- **Session hooks** — Auto-reminders for session start/stop workflows
+- **Context transfer** — Structured handover between sessions
+
+### Layer 4: Governance & Goals
+- **Activity logging** — Track work against defined goals
+- **Goal alignment** — Copilot outputs aligned with annual objectives
+- **Writing style** — Configurable style guide for consistent output
+
+---
 
 ## Quick Start
 
-### Installation
+### 1. Copy Framework to Your Project
 
-**Windows (PowerShell):**
-```powershell
-irm https://raw.githubusercontent.com/wk-dxg/spec-driven-development-framework/main/install.ps1 | iex
-```
-
-**macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wk-dxg/spec-driven-development-framework/main/install.sh | bash
+# Clone this template
+git clone https://github.com/boehmert/agentic-coding-project-template.git my-project
+cd my-project
+rm -rf .git
+git init
 ```
 
-**Manual:**
+### 2. Configure Environment
+
 ```bash
-# Clone framework
-git clone https://github.com/wk-dxg/spec-driven-development-framework.git temp
-# Copy .github folder to your project
-cp -r temp/.github /path/to/your/project/
-rm -rf temp
+cp .env.example .env
+# Edit .env with your credentials (Jira, Confluence, Vault paths)
 ```
 
-See [INSTALL.md](INSTALL.md) for detailed installation instructions.
+### 3. Install Python Dependencies
 
-### Initialize your project
-
-```
-@workspace /prompt repo-bootstrap
-
-Project: Your Project Name
-Description: What your project does
-Tech Stack: Python, FastAPI, PostgreSQL
+```bash
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\Activate.ps1 on Windows
+pip install -r requirements.txt
 ```
 
-### Create your first Workorder
+### 4. Configure MCP Servers (Optional)
 
-```
-@workspace /prompt create-workorder
-
-Task: Implement user authentication
-Context: Users need to log in to access protected resources
+```bash
+cp docs/mcp.json.template .vscode/mcp.json
+# Edit .vscode/mcp.json with your Vault path
 ```
 
-### Run pre-implementation check
+### 5. Start Working
 
 ```
-@workspace /prompt pre-implementation-check WO01
+/start {your task}
 ```
 
-### Implement with the Developer agent
-
-```
-@workspace Use the developer agent to implement WO01.
-```
+---
 
 ## Framework Structure
 
 ```
 .github/
-├── copilot-instructions.md     # Global guardrails & agent routing
-├── instructions/               # Coding standards
+├── copilot-instructions.md          # Global guardrails & routing
+├── instructions/                    # Path-scoped rules (~15 files)
+│   ├── vibecoding-core.instructions.md
+│   ├── vibecoding-extended.instructions.md
 │   ├── spec-driven.instructions.md
-│   ├── python.instructions.md
-│   ├── markdown.instructions.md
-│   └── response-style.instructions.md
-├── prompts/                    # Reusable workflows
-│   ├── repo-bootstrap.prompt.md
-│   ├── create-workorder.prompt.md
-│   ├── create-adr.prompt.md
-│   ├── pre-implementation-check.prompt.md
-│   ├── performance-review.prompt.md
-│   └── refactoring-plan.prompt.md
-├── agents/                     # Specialized agents
+│   ├── memory-system.instructions.md
+│   ├── wiki-provenance.instructions.md
+│   ├── vault-knowledge.instructions.md
+│   └── ...
+├── agents/                          # Specialized agents (12)
 │   ├── architect.agent.md
-│   ├── workorder-planner.agent.md
 │   ├── developer.agent.md
-│   ├── reviewer.agent.md
-│   ├── integrator.agent.md
-│   ├── documenter.agent.md
-│   └── security-reviewer.agent.md
-└── schemas/                    # Specification templates
-    ├── workorder.schema.md
-    ├── adr.schema.md
-    ├── report.schema.md
-    └── handoff.schema.md
+│   ├── critical-thinker.agent.md
+│   ├── doublecheck.agent.md
+│   └── ...
+├── prompts/                         # Reusable workflows (20+)
+│   ├── save-session.prompt.md
+│   ├── start.prompt.md
+│   ├── wiki-write.prompt.md
+│   ├── create-workorder.prompt.md
+│   └── ...
+├── skills/                          # Domain knowledge bundles (10)
+│   ├── ai-content-check/
+│   ├── document-pipeline/
+│   ├── schreibstil/
+│   ├── domain-knowledge-example/    # ← Replace with your domain
+│   └── ...
+├── schemas/                         # Specification templates
+│   ├── workorder.schema.md
+│   ├── adr.schema.md
+│   └── ...
+└── hooks/                           # Session automation
+    └── scripts/
+
+_tools/                              # Python libraries
+├── validate/                        # Frontmatter, terminology, AI-style
+├── ai_detect/                       # AI content detection
+├── documents/                       # Format conversion
+└── vault/                           # Vault ingestion
+
+tasks/                               # CLI entrypoints
+└── validate-output/                 # Run validation checks
+
+wiki/                                # Knowledge base
+├── _INDEX.md                        # Auto-maintained index
+└── agentic-coding/                  # Example articles
+
+governance/                          # Goals & tracking
+├── workday-goals.md
+└── activity-log.md
+
+workorders/                          # Planning artifacts
+└── _template/
+
+context/                             # Session & artifact tracking
+├── ARTIFACT_REGISTRY.md
+├── SESSION_LOG.md
+└── USER_INTENT_LOG.md
 ```
-
-## Agents
-
-| Agent | Role | When to Use |
-|-------|------|-------------|
-| **Architect** | System design, ADRs, tech decisions | Architecture questions, technology choices |
-| **Workorder Planner** | Create specs, define scope | Planning new work |
-| **Developer** | Write code, tests | Implementation |
-| **Reviewer** | Validate plans and code | Before and after implementation |
-| **Integrator** | Merge, resolve conflicts | Bringing work to main branch |
-| **Documenter** | Documentation, reports | Knowledge artifacts |
-| **Security Reviewer** | Security analysis | Security concerns, OWASP checks |
-
-## The Workflow
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    SPEC-DRIVEN WORKFLOW                         │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│   ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐ │
-│   │  PLAN    │───▶│IMPLEMENT │───▶│ VALIDATE │───▶│INTEGRATE │ │
-│   └──────────┘    └──────────┘    └──────────┘    └──────────┘ │
-│        │               │               │               │        │
-│   Workorder       Developer        Reviewer       Integrator    │
-│   Planner         writes code      checks          merges       │
-│   creates spec    and tests        quality         to main      │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-1. **Plan**: Create Workorder with clear scope and acceptance criteria
-2. **Check**: Run pre-implementation check (Reviewer)
-3. **Implement**: Code within approved scope (Developer)
-4. **Validate**: Review against criteria (Reviewer)
-5. **Integrate**: Merge to main branch (Integrator)
-
-## Key Concepts
-
-### Workorders
-Executable specifications that define:
-- Goal and context
-- Scope (in/out)
-- Deliverables
-- Acceptance criteria
-- Tests
-
-### Architecture Decision Records (ADRs)
-Document significant decisions:
-- Context and constraints
-- Options considered
-- Rationale for choice
-- Consequences
-
-### The 70% Problem
-AI-generated code is often "almost right but not quite". This framework addresses this by:
-- Explicit acceptance criteria
-- Pre-implementation checks
-- Review gates
-- Small, reviewable increments
-
-## Compatibility
-
-This framework works with:
-
-| Tool | Status |
-|------|--------|
-| GitHub Copilot (VS Code) | ✅ Fully supported |
-| GitHub Copilot (JetBrains) | ✅ Fully supported |
-| Cursor | ✅ Fully supported |
-| Claude (API/Cursor) | ✅ Fully supported |
-| Other AI assistants | ✅ With custom instructions |
-
-## Communication Style
-
-- **Agent definitions**: English
-- **User responses**: Match user's language (German/English)
-- **Decision points**: Present options, wait for user decision
-- **Uncertainty**: Explicit markers, never guess silently
-
-## Getting Started
-
-### Initialize a New Project
-```
-Use prompt: repo-bootstrap
-```
-
-### Create Your First Workorder
-```
-Use prompt: create-workorder
-```
-
-### Check Before Implementation
-```
-Use prompt: pre-implementation-check
-```
-
-## Contributing
-
-Contributions are welcome! Please:
-1. Create a Workorder for your proposed change
-2. Follow the framework's own workflow
-3. Include tests and documentation
-
-## License
-
-**Wolters Kluwer Internal Use Only** – See [LICENSE](LICENSE) for details.
-
-This software is proprietary to Wolters Kluwer and intended for internal use only.
 
 ---
 
-**Framework Version:** 1.0.0  
-**Owner:** Wolters Kluwer
+## Agents
+
+### From Layer 1 (Spec-Driven)
+
+| Agent | Role | When to Use |
+|-------|------|-------------|
+| **Architect** | System design, ADRs, tech decisions | Architecture questions |
+| **Workorder Planner** | Create specs, define scope | Planning new work |
+| **Developer** | Write code, tests | Implementation |
+| **Reviewer** | Validate plans and code | Quality gates |
+| **Integrator** | Merge, resolve conflicts | PR preparation |
+| **Documenter** | Documentation, reports | Knowledge artifacts |
+| **Security Reviewer** | Security analysis | OWASP concerns |
+
+### From Layer 2 (Knowledge & Review)
+
+| Agent | Role | When to Use |
+|-------|------|-------------|
+| **ADR Generator** | Create ADRs with structured formatting | Architecture decisions |
+| **Critical Thinker** | Challenge assumptions, find blind spots | Before major decisions |
+| **Doublecheck** | Fact-check AI outputs, flag risks | Verification |
+
+---
+
+## Key Workflows
+
+### The Vibecoding Loop
+```
+Context → Goals → Plan → Execute → Review
+```
+Every non-trivial task follows this loop. See `vibecoding-core.instructions.md`.
+
+### Spec-Driven Development
+```
+Plan → Check → Implement → Validate → Integrate
+```
+Workorders define scope; quality gates enforce standards.
+
+### Knowledge Management
+```
+/wiki-write → wiki/ snippet → /wiki-lint → wiki/_INDEX.md
+```
+Knowledge snippets have provenance frontmatter (source, confidence, review status).
+
+### Session Continuity
+```
+/start → work → /save-session → (next session) → /start
+```
+Context persists across conversations via memory system.
+
+---
+
+## Customization
+
+### Add Your Domain Knowledge
+1. Copy `.github/skills/domain-knowledge-example/` → `.github/skills/your-domain/`
+2. Replace example content with your terminology, architecture, patterns
+3. Update `_tools/validate/glossary.yaml` with your canonical terms
+
+### Add External Integrations
+1. Edit `docs/mcp.json.template` to add MCP server definitions
+2. Copy template to `.vscode/mcp.json`
+3. Add corresponding instruction file in `.github/instructions/`
+
+### Customize Goals
+1. Edit `governance/workday-goals.md` with your annual goals
+2. The activity log at `governance/activity-log.md` tracks progress automatically
+
+---
+
+## Compatibility
+
+| Tool | Status |
+|------|--------|
+| GitHub Copilot (VS Code) | Fully supported |
+| GitHub Copilot (JetBrains) | Agents + Instructions supported |
+| Cursor | Fully supported |
+| Claude (API/Cursor) | Fully supported |
+| Other AI assistants | With custom instructions |
+
+---
+
+## Version History
+
+- **v2.0** (April 2026) — Added Knowledge Management, Session Continuity, Validation Pipeline, AI Detection, Vault integration, Governance layer
+- **v1.0** (February 2026) — Spec-Driven Development Foundation (agents, schemas, prompts, quality gates)
+
+---
+
+## Related
+
+- [vibecoding-project-template](https://github.com/boehmert/vibecoding-project-template) — The simpler v1 foundation (public template)

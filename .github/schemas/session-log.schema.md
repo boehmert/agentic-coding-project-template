@@ -106,7 +106,7 @@ structured session logs, artifact registry, and intent tracking to the framework
 | MODIFIED | `.github/copilot-instructions.md` | Added Mandatory Context Protocol |
 
 ### Open Points for Next Session
-- [ ] Adapt KMT-workspace ARTIFACT_REGISTRY to actual project artifacts
+- [ ] Adapt Team-workspace ARTIFACT_REGISTRY to actual project artifacts
 - [ ] Decide whether to automate session-recap via tasks/ script
 
 ### Recommendation for Next Session
@@ -114,3 +114,4 @@ Load: `context/ARTIFACT_REGISTRY.md`, `context/SESSION_LOG.md` (last entry),
 `context/USER_INTENT_LOG.md` (last entry). Start with: pending open points above.
 ---
 ```
+

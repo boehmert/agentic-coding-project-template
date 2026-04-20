@@ -121,7 +121,7 @@ This costs time and creates drift from the intended architecture.
 - Must remain low-overhead for the user (not a bureaucratic burden)
 - Append-only logs preferred (no editing history)
 - Framework changes must be backward-compatible with existing workspaces
-- KMT workspace is the primary test case for these additions
+- Team workspace is the primary test case for these additions
 
 ### Progress History
 | Date | Update | Session Ref |
@@ -133,3 +133,4 @@ This costs time and creates drift from the intended architecture.
 - Evaluate whether ARTIFACT_REGISTRY should be per-agent-type or flat
 ---
 ```
+

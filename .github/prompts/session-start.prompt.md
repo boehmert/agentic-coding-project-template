@@ -106,3 +106,4 @@ Only load these if relevant to the current task:
 | Step 5 – Summary | 1 min | Always required |
 
 **Target:** Full orientation in < 5 minutes.
+

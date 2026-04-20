@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "windows": "powershell -NoProfile -ExecutionPolicy Bypass -File \".github/hooks/scripts/session-start.ps1\"",
+        "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"Agentic Workspace: /start {task}, /save-session, /remember, /wiki-write. Search: vault_search first, wiki/ second. MCP ready.\"}}'",
+        "cwd": "."
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "windows": "powershell -NoProfile -ExecutionPolicy Bypass -File \".github/hooks/scripts/stop-reminder.ps1\"",
+        "command": "echo '{\"systemMessage\":\"Session ending. Knowledge created? Run /save-session.\"}'",
+        "cwd": "."
+      }
+    ]
+  }
+}

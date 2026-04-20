@@ -98,3 +98,4 @@ When auto-triggering: announce briefly (*"Zwischenspeichern..."*), write the ent
 - User says "session recap", "log the session", "wrap up", or "save progress"
 - Before the context window gets full
 - When switching agent types
+

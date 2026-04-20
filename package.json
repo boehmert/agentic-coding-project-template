@@ -1,0 +1,26 @@
+{
+  "name": "my-workspace",
+  "version": "1.0.0",
+  "description": "Professional workspace for non-coding Copilot usage focused on Jira management, Definition of Ready (DoR) reviews, and documentation quality.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boehmert/agentic-coding-project-template.git"
+  },
+  "keywords": [],
+  "author": "Author Name",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boehmert/agentic-coding-project-template/issues"
+  },
+  "homepage": "https://github.com/boehmert/agentic-coding-project-template#readme"
+}
+
+

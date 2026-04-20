@@ -1,9 +1,7 @@
 ---
-description: "Create a new Workorder specification"
+description: "Neue Workorder-Spezifikation erstellen — interaktiver Wizard mit Scope, ACs und Implementierungsplan."
 tools:
-  - "codebase"
-  - "search"
-  - "editFiles"
+  [vscode, execute, read, agent, edit, search, web, browser, todo]
 ---
 
 # Create Workorder
@@ -180,3 +178,4 @@ ${context}
 ## Let's Start
 
 Please provide the basic details above, and I'll guide you through creating a complete Workorder.
+

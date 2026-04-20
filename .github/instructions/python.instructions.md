@@ -2,6 +2,7 @@
 name: Python Coding Standards
 description: Python coding conventions and best practices.
 applyTo: "**/*.py"
+priority: optional
 ---
 
 # Python Coding Standards
@@ -348,3 +349,4 @@ counter += 1
 # Returns user name  (but actually returns full user object)
 return get_user(user_id)
 ```
+

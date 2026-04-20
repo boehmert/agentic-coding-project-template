@@ -1,9 +1,11 @@
-# Project-specific
-workorders/
-docs/adr/
-REPO_STATE.md
+# Project-specific (user content, not framework)
 _legacy/
 documentation/
+downloads/
+
+# Sensitive
+.env
+.npmrc
 
 # OS files
 .DS_Store
@@ -12,6 +14,7 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+!.vscode/tasks.json
 *.swp
 *.swo
 
@@ -20,8 +23,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 .Python
+.venv/
 venv/
-.env
 
 # Node
 node_modules/

@@ -58,6 +58,7 @@ produces low-quality results.
 | 2026-02-06 | Initial framework scaffolding complete | Session 2026-02-06 |
 
 ### Notes / Open Questions
-- Test with a real project (KMT workspace) to validate patterns
+- Test with a real project (Team- workspace) to validate patterns
 ---
 END EXAMPLE -->
+

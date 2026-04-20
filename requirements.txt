@@ -1,0 +1,52 @@
+# =============================================================================
+# Agentic Workspace – Python-Abhängigkeiten
+# =============================================================================
+
+# --- Atlassian APIs (Jira + Confluence) --------------------------------------
+atlassian-python-api>=3.41.0
+
+# --- Microsoft Graph API (MSAL-Authentifizierung) ---------------------------
+msal>=1.28.0
+
+# --- HTTP und Browser-Auth ---------------------------------------------------
+requests>=2.31.0
+selenium>=4.16.0
+webdriver-manager>=4.0.1
+
+# --- Umgebungsvariablen ------------------------------------------------------
+python-dotenv>=1.0.0
+
+# --- Markdown-Konvertierung --------------------------------------------------
+markdown2>=2.4.0
+
+# --- Dokument-Verarbeitung ---------------------------------------------------
+# Word-Dokumente (.docx) lesen und schreiben
+python-docx>=1.1.0
+
+# PDF-Dateien lesen
+pypdf>=4.0.0
+
+# Excel-Dateien (.xlsx) lesen und schreiben (Sprint-Exporte etc.)
+openpyxl>=3.1.0
+
+# Template-Engine für Dokument-Generierung (Jira-Tickets, Confluence-Seiten)
+jinja2>=3.1.0
+
+# --- Präsentationen ----------------------------------------------------------
+# PowerPoint (.pptx) erstellen und befüllen
+python-pptx>=0.6.23
+
+# --- Datenbank-Zugriff (Windows only) ----------------------------------------
+# Access-Datenbanken (.mdb, .accdb) via Windows ODBC lesen (read-only)
+# Requires: "Microsoft Access Driver (*.mdb, *.accdb)" ODBC driver (Windows only)
+# Skip on macOS/Linux: pip install -r requirements.txt will fail for this line
+# pyodbc>=5.0.0
+
+# --- RDF / Semantic Web ------------------------------------------------------
+# RDF-Graphen parsen und verarbeiten (Turtle, JSON-LD, N-Triples, RDF/XML)
+rdflib>=7.0.0
+
+# SHACL-Shapes validieren
+pyshacl>=0.25.0
+
+

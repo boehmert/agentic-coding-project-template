@@ -51,3 +51,4 @@ a reusable template for future projects.
 Load: `context/ARTIFACT_REGISTRY.md`. Start with: creating first workorder.
 ---
 END EXAMPLE -->
+

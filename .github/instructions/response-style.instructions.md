@@ -2,6 +2,7 @@
 name: Response Style Guidelines
 description: Communication style and language rules for agent responses.
 applyTo: "**"
+priority: recommended
 ---
 
 # Response Style Guidelines
@@ -274,3 +275,4 @@ When responding in German:
 - "Nächste Schritte" statt "Next Steps"
 - "Offene Fragen" statt "Open Questions"
 - "Details" bleibt "Details"
+

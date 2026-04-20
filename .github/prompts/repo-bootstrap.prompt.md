@@ -300,3 +300,4 @@ Thumbs.db
 - [ ] Verify WO_CATALOG.md is initialized
 - [ ] Run initial tests (if any)
 - [ ] Make initial commit
+

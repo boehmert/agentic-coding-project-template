@@ -237,3 +237,4 @@ Do NOT create an ADR for:
 - Implementation details within a single Workorder
 - Obvious choices with no real alternatives
 - Temporary workarounds (document in Workorder instead)
+

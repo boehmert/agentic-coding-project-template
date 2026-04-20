@@ -2,6 +2,7 @@
 name: Spec-Driven Development Rules
 description: Rules for creating and managing specification artifacts.
 applyTo: "**"
+priority: recommended
 ---
 
 # Spec-Driven Development Rules
@@ -198,3 +199,4 @@ Use IDs (FR-001, NFR-001) in code comments and test docstrings for traceability.
 - Update status immediately when Workorder state changes
 - Add completion date when status becomes DONE
 - Never delete rows – mark as DONE or CANCELLED
+
