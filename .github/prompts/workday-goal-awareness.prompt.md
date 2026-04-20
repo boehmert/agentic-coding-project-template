@@ -1,3 +1,7 @@
+---
+description: "Aufgabe gegen Workday Goals abgleichen — prüft Zielbeitrag, Adoptionspotenzial und Workflow-Integration."
+---
+
 # Workday Goal Awareness
 
 You are supporting the user in their daily work.

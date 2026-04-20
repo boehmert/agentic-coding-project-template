@@ -4,7 +4,7 @@ description: "Zeigt alle verfügbaren Prompts, Skills und Instructions als Katal
 
 Die folgende Aufgabe soll bearbeitet werden:
 
-{{task}}
+${input:task:Aufgabe beschreiben...}
 
 ---
 

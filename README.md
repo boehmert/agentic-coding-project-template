@@ -2,6 +2,18 @@
 
 A comprehensive framework for AI-assisted software development with specialized agents, structured workflows, knowledge management, and quality gates. Works with GitHub Copilot, Cursor, and other AI coding assistants.
 
+## When to Use This Template
+
+This template serves two scenarios:
+
+**Scenario A — New project:** Clone and use as the foundation for a greenfield project. You get the full framework structure from day one.
+
+**Scenario B — Existing project:** Copy the framework directories (`.github/`, `context/`, `workorders/`, `wiki/`) into an existing codebase. The framework is additive and does not interfere with application code.
+
+→ See **[docs/SETUP.md](docs/SETUP.md)** for full setup instructions for both scenarios.
+
+---
+
 ## The Problem This Solves
 
 AI coding assistants are powerful but can produce code that is **"70% right"** — almost correct, but with subtle issues in edge cases, error handling, or architecture alignment. This framework addresses that by:
@@ -43,43 +55,23 @@ From the original [vibecoding-project-template](https://github.com/boehmert/vibe
 
 ## Quick Start
 
-### 1. Copy Framework to Your Project
+### New Project
 
 ```bash
-# Clone this template
 git clone https://github.com/boehmert/agentic-coding-project-template.git my-project
-cd my-project
-rm -rf .git
-git init
-```
-
-### 2. Configure Environment
-
-```bash
+cd my-project && rm -rf .git && git init
 cp .env.example .env
-# Edit .env with your credentials (Jira, Confluence, Vault paths)
-```
-
-### 3. Install Python Dependencies
-
-```bash
-python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\Activate.ps1 on Windows
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Configure MCP Servers (Optional)
+Then in VS Code Copilot Chat: `/start Bootstrap my project`
 
-```bash
-cp docs/mcp.json.template .vscode/mcp.json
-# Edit .vscode/mcp.json with your Vault path
-```
+### Existing Project
 
-### 5. Start Working
+Copy `.github/`, `context/`, `governance/`, `workorders/`, `wiki/`, `COPILOT.md` into your repo.
 
-```
-/start {your task}
-```
+→ **Full instructions for both scenarios: [docs/SETUP.md](docs/SETUP.md)**
 
 ---
 

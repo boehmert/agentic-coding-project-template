@@ -78,6 +78,63 @@ Sprint:
 #   description: "Your data transformation pipeline"
 #   category: pipeline
 #
+
+# --- Framework terms (agentic-coding-project-template) ---
+
+Workorder:
+  canonical: "Workorder"
+  variants: ["work order", "Work Order", "WO", "workorder"]
+  description: "Executable work specification with scope, deliverables, and acceptance criteria"
+  category: framework
+
+ADR:
+  canonical: "ADR"
+  variants: ["adr", "Architecture Decision Record", "architecture decision record"]
+  description: "Architecture Decision Record — formal documentation of a significant tech decision"
+  category: framework
+
+Spec_Driven_Development:
+  canonical: "Spec-Driven Development"
+  variants: ["spec driven development", "spec-driven", "SDD"]
+  description: "Development practice requiring a specification before implementation"
+  category: framework
+
+Knowledge_Snippet:
+  canonical: "Knowledge Snippet"
+  variants: ["knowledge snippet", "wiki snippet", "KB snippet"]
+  description: "LLM-generated knowledge artifact with provenance frontmatter stored in wiki/"
+  category: framework
+
+Vibecoding:
+  canonical: "Vibecoding"
+  variants: ["vibe coding", "vibe-coding"]
+  description: "AI-assisted development loop: Context → Goals → Plan → Execute → Review"
+  category: framework
+
+Definition_of_Done:
+  canonical: "Definition of Done"
+  variants: ["DoD", "dod", "definition of done"]
+  description: "Criteria that must be met for a Workorder to be considered complete"
+  category: framework
+
+Session_Continuity:
+  canonical: "Session Continuity"
+  variants: ["session continuity", "context continuity"]
+  description: "Practice of persisting and restoring AI session context across conversations"
+  category: framework
+
+Active_Context:
+  canonical: "Active Context"
+  variants: ["active context", "activecontext"]
+  description: "Persisted working state between sessions, stored in /memories/repo/active-context.md"
+  category: framework
+
+Pre_Implementation_Check:
+  canonical: "Pre-Implementation Check"
+  variants: ["pre-implementation check", "pre implementation check", "PIC"]
+  description: "Quality gate validating a Workorder is complete before coding begins"
+  category: framework
+
 # MyProduct:
 #   canonical: "MyProduct"
 #   variants: ["myproduct", "my-product"]

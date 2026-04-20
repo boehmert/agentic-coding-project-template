@@ -1,22 +1,20 @@
 {
-  "name": "my-workspace",
-  "version": "1.0.0",
-  "description": "Professional workspace for non-coding Copilot usage focused on Jira management, Definition of Ready (DoR) reviews, and documentation quality.",
-  "main": "index.js",
+  "name": "agentic-coding-project-template",
+  "version": "2.0.0",
+  "description": "Framework for AI-assisted software development with specialized agents, structured workflows, knowledge management, and quality gates.",
+  "private": true,
+  "_note": "This is not a Node.js application. package.json is workspace metadata only.",
   "directories": {
     "doc": "docs",
     "example": "examples"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/boehmert/agentic-coding-project-template.git"
   },
-  "keywords": [],
+  "keywords": ["copilot", "agents", "spec-driven", "agentic-coding", "vibecoding"],
   "author": "Author Name",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/boehmert/agentic-coding-project-template/issues"
   },
