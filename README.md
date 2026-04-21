@@ -233,3 +233,48 @@ Context persists across conversations via memory system.
 ## Related
 
 - [vibecoding-project-template](https://github.com/boehmert/vibecoding-project-template) — The simpler v1 foundation (public template)
+
+---
+
+## Layer 5: Multi-Agent Orchestration
+
+Layer 5 adds a formal multi-agent governance model on top of the existing spec-driven workflow. It is **optional** — projects can use Layers 1–4 without it.
+
+### When to use Layer 5
+
+Use Layer 5 when your project has:
+- Multiple stakeholder domains requiring simultaneous analysis (tech, legal, UX, business)
+- Critical decisions that must not proceed without explicit human approval
+- A need for persistent project state shared across agents and sessions
+- Teams that want compound learning accumulation over many sessions
+
+### New Agents
+
+| Agent | Role | When to Call |
+|-------|------|--------------|
+| **Orchestrator** | Workflow manager, HITL gatekeeper | First agent for any new spec, phase change, or unblocking |
+| **Lead Coordinator** | Cross-domain synthesis with confidence scoring | Architecture questions, multi-domain analysis |
+| **Project Planner** | Roadmap owner (exclusive write: `context/project-plan.md`) | Plan updates, milestone sequencing, health checks |
+
+### Routing Pattern
+
+```
+User request
+  → Orchestrator: validate_intent() + BLOCKED check
+      → [BLOCKED] → surface to user, pause
+      → [Routine] → Lead Coordinator: domain analysis + synthesis report
+                      → [confidence < 0.65] → HITL (decisions-pending.md)
+                      → [confidence ≥ 0.65] → Developer / Project Planner
+```
+
+### New Files
+
+| File | Purpose |
+|------|---------|
+| `context/sprint-state.md` | Living project state — current phase, open decisions |
+| `context/decisions-pending.md` | HITL stop-signal: `[BLOCKED]` / `[DEFERRED]` entries |
+| `context/DECISION_LOG.md` | Finalized decisions (DL-NNN) after human approval |
+| `context/lessons-learned.md` | Compound team learning log |
+| `.github/schemas/decision-log.schema.md` | Schema for DL-NNN entries |
+| `.github/instructions/hitl-governance.instructions.md` | HITL pattern rules |
+| `.github/instructions/agent-skills.instructions.md` | Anti-sycophancy, confidence scoring, scope discipline |

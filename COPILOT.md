@@ -95,3 +95,43 @@ Pre-Implementation Check is mandatory before coding.
 - Never write secrets — use `.env` and `python-dotenv`
 - Never hardcode WK/company-specific paths or names (this is a public template)
 - Never bypass quality gates (`/pre-implementation-check`) for shortcuts
+
+---
+
+## Layer 5: Multi-Agent Orchestration
+
+### Agent Routing
+
+| Situation | Agent |
+|---|---|
+| New spec, phase change, blocked decision | `@Orchestrator` — always first |
+| Architecture question, multi-domain analysis | `@Lead Coordinator` (via Orchestrator) |
+| Project plan / roadmap update | `@Project Planner` |
+| Implementation (Workorder approved) | `@Developer` |
+| Challenge assumptions before a decision | `@Critical Thinker` |
+| Fact-check an AI-generated output | `@Doublecheck` |
+
+### HITL Decision Workflow
+
+```
+Lead Coordinator cannot resolve → context/decisions-pending.md [BLOCKED]
+Orchestrator surfaces to user → human decides
+Lead Coordinator documents → context/DECISION_LOG.md (DL-NNN)
+Entry removed from decisions-pending.md
+```
+
+### New Context Files
+
+| File | Written by | Purpose |
+|---|---|---|
+| `context/sprint-state.md` | Lead Coordinator | Current phase + open decisions |
+| `context/decisions-pending.md` | Lead Coordinator | HITL stop-signal |
+| `context/DECISION_LOG.md` | Lead Coordinator | Finalized decisions (DL-NNN) |
+| `context/lessons-learned.md` | All agents via `/remember` | Compound team learning |
+
+### New Prompt
+
+| Command | When |
+|---|---|
+| `/save-session` | Session end — persist thinking process and open questions |
+| `/remember` | Save a new team learning to `context/lessons-learned.md` |
