@@ -88,7 +88,29 @@ Pre-Implementation Check is mandatory before coding.
 
 ---
 
-## What NOT to Do
+## Product Context
+
+> **Fill in this section when using this template for a specific project.**
+> Persona agents (Arne, Max, Elena, Nadia, Felix, Sam, Tom, David, Sophie, Mia, Jochen, Kai) read this file first for product context. Without this block they cannot provide accurate domain analysis.
+
+```yaml
+product_name: "[Product name]"
+problem_statement: "[One sentence: what problem does this product solve?]"
+target_audience: "[e.g., B2C SaaS / iOS users in the EU / SMB teams]"
+business_model: "[e.g., Freemium subscription / B2B SaaS / marketplace]"
+tech_stack:
+  backend: "[e.g., Python/FastAPI]"
+  frontend: "[e.g., React / SwiftUI]"
+  persistence: "[e.g., PostgreSQL + Redis]"
+  hosting: "[e.g., AWS EU-Central / Hetzner]"
+regulatory_context:
+  - "[e.g., GDPR — EU users]"
+  - "[e.g., EU AI Act — AI features]"
+current_phase: "[e.g., MVP / Growth / Scale]"
+open_strategic_questions:
+  - "[e.g., Freemium vs. trial?]"
+  - "[e.g., iOS-first or web-first?]"
+```
 
 - Never implement without a Workorder or explicit user approval
 - Never change public APIs in `_tools/` without updating callers in `tasks/`
@@ -107,7 +129,13 @@ Pre-Implementation Check is mandatory before coding.
 | New spec, phase change, blocked decision | `@Orchestrator` — always first |
 | Architecture question, multi-domain analysis | `@Lead Coordinator` (via Orchestrator) |
 | Project plan / roadmap update | `@Project Planner` |
-| Implementation (Workorder approved) | `@Developer` |
+| New Workorder / scope definition | `@Lisa – Workorder Planner` |
+| Pre/post-implementation code review | `@Marco – Code Reviewer` |
+| Implementation (Workorder approved) | `@Lena – Python Developer` |
+| Module structure / import boundaries / ADR | `@Robin – Execution Architect` |
+| Security code review, OWASP findings | `@Chris – Security Reviewer` |
+| Merge after GREEN gate | `@Jana – Integrator` |
+| README, docstrings, WO reports | `@Finn – Technical Writer` |
 | Challenge assumptions before a decision | `@Critical Thinker` |
 | Fact-check an AI-generated output | `@Doublecheck` |
 

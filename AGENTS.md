@@ -6,7 +6,22 @@ This file documents all agents in this workspace, their domains, when to invoke 
 
 ---
 
-## Layer 1 — Orchestration
+## Two Functional Layers
+
+This agent roster operates across two distinct functional layers:
+
+| Layer | Tiers | Function |
+|---|---|---|
+| **Analysis Layer** | Tier 1–2 + Tier 4 | Deep domain analysis → Reports and recommendations for human review |
+| **Execution Layer** | Tier 3 | Translate approved decisions into code, specs, tests, and commits |
+
+**Flow:** Orchestrator → Lead Coordinator → Tier 4 Domain Personas → Lisa (Workorder Planner) → Execution Layer (Lena, Robin, Marco, Chris, Jana, Finn)
+
+**Rule:** No Execution Layer agent implements work that has not been approved by a Workorder and cleared by Marco's pre-implementation gate. No Analysis Layer agent writes application code.
+
+---
+
+## Tier 1 — Orchestration
 
 | Agent | File | When to Invoke |
 |---|---|---|
@@ -15,32 +30,36 @@ This file documents all agents in this workspace, their domains, when to invoke 
 
 ---
 
-## Layer 2 — Planning & Quality
+## Tier 2 — Planning & Quality
+
+Pure coordination and quality roles — no execution personas. For Workorder/code/doc work, use Tier 3.
 
 | Agent | File | When to Invoke |
 |---|---|---|
 | **Project Planner** | `project-planner.agent.md` | Milestones, task sequencing, dependency mapping, sprint planning |
-| **Workorder Planner** | `workorder-planner.agent.md` | Creating and refining implementation workorders |
-| **ADR Generator** | `adr-generator.agent.md` | Documenting architecture decisions formally (ADR format) |
-| **Reviewer** | `reviewer.agent.md` | Code review, PR review, quality gates |
-| **Security Reviewer** | `security-reviewer.agent.md` | Security audit of code, APIs, data flows |
+| **ADR Generator** | `adr-generator.agent.md` | Documenting architecture decisions formally (ADR format); utility for Robin |
 | **Critical Thinker** | `critical-thinker.agent.md` | Red-teaming assumptions, challenging proposals before commitment |
 | **Doublecheck** | `doublecheck.agent.md` | Second opinion on high-stakes decisions |
-| **Documenter** | `documenter.agent.md` | Writing and updating technical documentation |
-| **Integrator** | `integrator.agent.md` | Cross-module integration, resolving interface mismatches |
 
 ---
 
-## Layer 3 — Specialist Roles (Generic)
+## Tier 3 — Execution Layer
 
-| Agent | File | When to Invoke |
-|---|---|---|
-| **Architect** | `architect.agent.md` | System architecture, technology selection, service boundary design |
-| **Developer** | `developer.agent.md` | Code implementation within approved specifications |
+These agents operate close to the code. They receive decisions from the Analysis Layer (Tier 4 personas) and execute against approved Workorders. Each has a persona that reflects their specific craft.
+
+| Agent | Persona | File | When to Invoke |
+|---|---|---|---|
+| **Workorder Planner** | **Lisa** | `workorder-planner.agent.md` | Creating/refining Workorders, scope definition, WO_CATALOG |
+| **Architect** | **Robin** | `architect.agent.md` | Translating architecture decisions into module structure, ADRs, import boundaries |
+| **Developer** | **Lena** | `developer.agent.md` | Implementing approved Workorders in Python |
+| **Reviewer** | **Marco** | `reviewer.agent.md` | Pre/post-implementation gate, GREEN/YELLOW/RED decisions |
+| **Security Reviewer** | **Chris** | `security-reviewer.agent.md` | Code-level security review, OWASP findings, fix verification |
+| **Integrator** | **Jana** | `integrator.agent.md` | Merging branches after GREEN gate, CI verification, PRs |
+| **Documenter** | **Finn** | `documenter.agent.md` | README, docstrings, WO reports, wiki snippets |
 
 ---
 
-## Layer 4 — Domain-Expert Personas
+## Tier 4 — Analysis Layer (Domain-Expert Personas)
 
 These agents bring deep domain methodology. Invoke them directly for focused analysis in their domain or let the Lead Coordinator coordinate them.
 
@@ -83,15 +102,16 @@ These agents bring deep domain methodology. Invoke them directly for focused ana
 ### Feature Planning Workflow
 
 ```
-1. @Orchestrator          → assess scope and risks, create brief
-2. @Lead Coordinator      → coordinate domain analysis (max 4 agents/batch)
-3. Domain Agents          → parallel analysis in their domain
-4. @Lead Coordinator      → synthesize, identify conflicts
-5. [HITL]                 → human review of critical decisions
-6. @Workorder Planner     → create implementation workorder
-7. @Developer             → implement against approved spec
-8. @Reviewer              → code review
-9. @Documenter            → update technical docs
+1. @Orchestrator           → assess scope and risks, create brief
+2. @Lead Coordinator       → coordinate domain analysis (max 4 agents/batch)
+3. Domain Agents (Tier 4)  → parallel analysis in their domain
+4. @Lead Coordinator       → synthesize, identify conflicts
+5. [HITL]                  → human review of critical decisions
+6. @Lisa                   → create implementation Workorder
+7. @Lena                   → implement against approved spec
+8. @Marco                  → code review (GREEN/YELLOW/RED gate)
+9. @Jana                   → merge after GREEN gate
+10. @Finn                  → update technical docs
 ```
 
 ### Cross-Domain Escalation Patterns

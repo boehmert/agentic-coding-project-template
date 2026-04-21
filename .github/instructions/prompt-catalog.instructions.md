@@ -31,19 +31,57 @@ Aufruf via `/name` im Chat.
 | `/remember` | Einzelnes Learning persistent als Memory speichern |
 | `/cognitive-continuity-context-transfer` | Strukturiertes Kontext-Transfer-Artefakt (CCCTP) für Session-Handover |
 | `/refresh-docs` | ARCHITECTURE.md und copilot-instructions.md gegen Workspace prüfen, Updates vorschlagen |
+| `/integrate-framework` | Einmalig nach Framework-Import: Agenten-Konflikte auflösen, COPILOT.md konfigurieren, VS Code einrichten |
 
 ---
 
 ## 2. Agents (`.github/agents/`)
 
-Aufruf via `@name` im Chat.
+Aufruf via `@name` im Chat. Vollständiger Katalog: siehe `AGENTS.md`.
+
+### Tier 1 — Orchestration
 
 | Agent | Rolle |
 |---|---|
-| `@developer` | Implementiert Workorders, schreibt Code und Tests |
-| `@architect` | System-Architektur, Technologie-Entscheidungen, ADRs |
+| `@Orchestrator` | Einstiegspunkt für neue Features, Sprint-Start, Cross-Domain-Analyse |
+| `@Lead Coordinator` | Cross-domain-Synthese, Konfliktauflösung, Confidence Scoring |
+
+### Tier 2 — Planning & Quality
+
+| Agent | Rolle |
+|---|---|
+| `@Project Planner` | Roadmap, Meilensteine, Sprint-Planung |
 | `@critical-thinker` | Hinterfragt Annahmen, deckt blinde Flecken auf — schreibt keinen Code |
 | `@doublecheck` | Prüft AI-Outputs auf Faktengenauigkeit, flaggt Risiken |
+
+### Tier 3 — Execution Layer (Personas)
+
+| Agent | Persona | Rolle |
+|---|---|---|
+| `@Lisa – Workorder Planner` | **Lisa** | Workorders erstellen/verfeinern, Scope definieren, WO_CATALOG |
+| `@Robin – Execution Architect` | **Robin** | Architektur-Entscheidungen in Modul-Struktur übersetzen, ADRs |
+| `@Lena – Python Developer` | **Lena** | Approved Workorders implementieren, Tests schreiben |
+| `@Marco – Code Reviewer` | **Marco** | Pre/Post-Implementation Gate, GREEN/YELLOW/RED |
+| `@Chris – Security Reviewer` | **Chris** | Code-Level Security Review, OWASP, Fix-Verifikation |
+| `@Jana – Integrator` | **Jana** | Branches mergen, CI verifizieren, PRs |
+| `@Finn – Technical Writer` | **Finn** | README, Docstrings, WO-Reports, Wiki-Snippets |
+
+### Tier 4 — Analysis Layer (Domain-Expert Personas)
+
+| Agent | Domäne |
+|---|---|
+| `@Arne – Product Owner` | Produkt-Strategie, Roadmap, Monetarisierung |
+| `@Tom – Growth & Marketing` | Wachstum, Akquise, Retention |
+| `@David – Customer Success` | Onboarding, Activation, Churn |
+| `@Sophie – UX/UI Designer` | UX/UI, Onboarding-Flows, Permission-UX |
+| `@Mia – Content Strategist` | UX Writing, Content-Strategie, Plain Language |
+| `@Elena – AI/ML Engineer` | LLM-Architektur, RAG, AI-Evaluation |
+| `@Max – Software Architect` | Architektur-Entscheidungen, ADRs, API-Design |
+| `@Felix – DevOps & Platform` | Infrastruktur, CI/CD, SRE, EU Data Residency |
+| `@Sam – iOS Developer` | Swift/SwiftUI, App Store, StoreKit |
+| `@Kai – Data Analyst` | Analytics, Metriken, A/B-Testing |
+| `@Jochen – Legal Advisor` | EU AI Act, DSGVO, Produkthaftung |
+| `@Nadia – Privacy Architect & CISO` | Privacy-by-Design, Threat Modeling, OAuth |
 
 ---
 
