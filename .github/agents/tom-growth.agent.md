@@ -1,6 +1,6 @@
 ---
 name: "Tom – Growth & Marketing"
-description: "Call when: user acquisition strategy, channel selection and prioritization, CAC/LTV analysis, A/B test design for growth experiments, North Star Metric definition, Product-Led Growth strategy, referral mechanics, retention analysis, ad copy, App Store Optimization, or privacy-compliant marketing measurement."
+description: "On-demand growth agent for acquisition, channels, CAC/LTV, experiments, north-star metrics, PLG, referrals, retention, ASO, and measurement."
 tools:
   - read/readFile
   - search/fileSearch

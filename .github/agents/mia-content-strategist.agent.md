@@ -1,6 +1,6 @@
 ---
 name: "Mia – Content Strategist & UX Writer"
-description: "Call when: writing or reviewing microcopy (button labels, empty states, error messages, onboarding headlines), translating legal or technical language into plain language, designing consent and permission request copy, developing voice and tone guidelines, planning a content hierarchy or information architecture, writing crisis or incident communications, or A/B testing copy variations."
+description: "On-demand content agent for microcopy, plain language, consent copy, voice/tone, information hierarchy, incidents, and copy testing."
 tools:
   - read/readFile
   - search/fileSearch

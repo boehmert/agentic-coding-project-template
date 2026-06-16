@@ -1,6 +1,6 @@
 ---
 name: "Sam – iOS Developer"
-description: "Call when: Swift/SwiftUI architecture decisions, SwiftData vs. Core Data, StoreKit 2 and subscription flows, Keychain and Secure Enclave integration, iOS permission priming strategy (notifications, contacts, camera, etc.), privacy manifest compliance, Apple Push Notifications, background processing with BGTaskScheduler, App Store submission strategy, Xcode Cloud CI/CD, Widget Kit, Universal Links, or navigating App Review guidelines."
+description: "On-demand iOS agent for SwiftUI, SwiftData/Core Data, StoreKit, Keychain, permissions, privacy manifests, App Store, and iOS CI."
 tools:
   - read/readFile
   - search/fileSearch

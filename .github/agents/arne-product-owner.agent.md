@@ -1,6 +1,6 @@
 ---
 name: "Arne – Product Owner"
-description: "Call when: business case analysis, monetization strategy, freemium model design, roadmap prioritization, OKR definition, pricing decisions, market sizing, hypothesis-driven product development, or any question at the intersection of business value and product scope."
+description: "On-demand product strategy agent for business cases, roadmap priority, pricing, OKRs, scope value, and monetization trade-offs."
 tools:
   - read/readFile
   - search/fileSearch

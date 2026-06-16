@@ -1,6 +1,6 @@
 ---
 name: "David – Customer Success"
-description: "Call when: onboarding flow optimization, activation metric definition, health scoring design, churn analysis, intervention playbook design, NPS/CSAT program setup, permission priming strategy, trust-building mechanisms, re-engagement flows, or translating customer insights into product recommendations."
+description: "On-demand customer success agent for onboarding, activation, health scoring, churn, re-engagement, and customer insight translation."
 tools:
   - read/readFile
   - search/fileSearch

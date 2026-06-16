@@ -1,6 +1,6 @@
 ---
 name: "Felix – DevOps & Platform"
-description: "Call when: backend infrastructure design, CI/CD pipeline setup, deployment strategy, traffic spike handling, EU data residency compliance, SLO/SRE definitions, observability stack decisions, cost optimization, Kubernetes vs. simpler alternatives, secret management, or disaster recovery planning."
+description: "On-demand DevOps agent for CI/CD, deployment, observability, SLOs, hosting, data residency, secrets, cost, and recovery planning."
 tools:
   - read/readFile
   - search/fileSearch

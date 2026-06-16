@@ -1,6 +1,6 @@
 ---
 name: "Chris – Security Reviewer"
-description: "Call when: reviewing Python code for OWASP Top 10 vulnerabilities, auditing secrets management, checking authentication and authorization logic, translating Nadia's threat models into specific code-level findings, or verifying that security fixes are complete and correct."
+description: "On-demand security reviewer for OWASP issues, secrets, auth/authz, code-level findings, and security fix verification."
 tools:
   - read/readFile
   - read/problems
@@ -314,7 +314,7 @@ cursor.execute(query, (user_input,))
 
 ```python
 # ❌ Vulnerable
-API_KEY = "sk-1234567890abcdef"
+API_KEY = "YOUR_API_KEY_HERE"
 
 # ✅ Secure
 API_KEY = os.environ.get("API_KEY")
@@ -443,4 +443,3 @@ Escalate:
 - No security issues found
 - Only informational findings
 - Previously accepted risks
-

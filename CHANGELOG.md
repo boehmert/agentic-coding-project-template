@@ -6,6 +6,22 @@ Format: [Semantic Versioning](https://semver.org/) — `MAJOR.MINOR.PATCH`
 
 ---
 
+## [Unreleased]
+
+### Added
+- `docs/TEMPLATE_USAGE.md` — usage and maintenance contract for humans and AI agents
+- `.github/instructions/template-maintenance.instructions.md` — path-scoped guardrails for agents modifying the template
+- `context/STARTUP_BRIEF.md` — hot startup context for token-aware agent sessions
+- `governance/project.profile.yaml`, `governance/routing-policy.yaml`, and `governance/policy.yaml` — repo-specific profile, routing, and policy gates
+- `docs/agent-framework/workflow-modes.md` and `docs/agent-framework/workorder-quality-contract.md` — workflow mode and Workorder evidence contracts
+- `.github/agents/mira-visionary-discovery.agent.md` — on-demand discovery role
+
+### Changed
+- `README.md` and `.github/FRAMEWORK_MANIFEST.md` now link the template maintenance workflow.
+- `AGENTS.md`, `.github/copilot-instructions.md`, Core agents, Workorder prompts, and Workorder template now follow the slim policy-driven agent workflow.
+
+---
+
 ## [2.1.0] — 2026-04-20
 
 ### Added

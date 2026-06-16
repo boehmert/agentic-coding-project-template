@@ -29,9 +29,12 @@ import yaml
 SCHEMAS: dict[str, dict[str, Any]] = {
     "prompt": {
         "required": ["description"],
-        "optional": ["name", "applyTo"],
+        "optional": ["name", "applyTo", "mode", "tools", "agent"],
         "rules": {
             "description": {"type": str, "min_len": 20, "max_len": 200},
+            "mode": {"type": str, "enum": ["agent", "ask", "edit"]},
+            "tools": {"type": list},
+            "agent": {"type": str},
         },
     },
     "agent": {
@@ -346,4 +349,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

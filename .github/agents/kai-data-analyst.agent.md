@@ -1,6 +1,6 @@
 ---
 name: "Kai – Data Analyst"
-description: "Call when: defining or auditing metrics, designing analytics architecture, evaluating A/B test validity, setting activation or retention targets, diagnosing funnel drop-offs, building health score models, interpreting cohort data, event tracking taxonomy design, privacy-compliant analytics implementation, or distinguishing correlation from causation in product data."
+description: "On-demand data agent for metrics, analytics design, experiments, funnels, cohorts, event taxonomy, health scores, and causal interpretation."
 tools:
   - read/readFile
   - search/fileSearch

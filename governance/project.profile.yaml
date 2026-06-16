@@ -1,0 +1,71 @@
+version: 1
+updated: "2026-06-16"
+owner: orchestrator-lite
+
+repository:
+  name: agentic-coding-project-template
+  type: ai_assisted_development_template
+  primary_language: python
+  secondary_formats:
+    - markdown
+    - yaml
+    - json
+  purpose: "Reusable framework for agentic, spec-driven software development."
+
+paths:
+  startup_brief: context/STARTUP_BRIEF.md
+  context_root: context
+  artifact_registry: context/ARTIFACT_REGISTRY.md
+  decisions_pending: context/decisions-pending.md
+  decision_log: context/DECISION_LOG.md
+  sprint_state: context/sprint-state.md
+  session_log: context/SESSION_LOG.md
+  workorder_root: workorders
+  workorder_catalog: workorders/WO_CATALOG.md
+  workorder_template: workorders/_template/workorder-template.md
+  adr_root: docs/adr
+  schema_root: .github/schemas
+  agents_root: .github/agents
+  prompts_root: .github/prompts
+  instructions_root: .github/instructions
+  framework_docs: docs/agent-framework
+  migration_root: .agent-migration
+
+workflow:
+  default_mode: standard
+  lightweight_allowed_for:
+    - small_docs_update
+    - local_reversible_config_change
+    - validation_tooling_smoke
+  high_risk_triggers:
+    - secrets
+    - personal_data
+    - external_calls
+    - dependency_changes
+    - ci_cd
+    - public_api_or_schema
+    - legal_or_regulatory_claim
+    - llm_rag_agentic_behavior
+    - destructive_or_irreversible_action
+
+validation:
+  smoke_commands:
+    - python3 tasks/validate-output/run.py
+    - python3 -m compileall _tools tasks
+    - git diff --check
+  strict_commands:
+    - python3 -m _tools.validate.frontmatter_check --path .github --strict
+  known_current_warnings:
+    - "Several legacy agent descriptions exceed the current frontmatter length guideline."
+    - "Several legacy prompt frontmatter fields are not yet modeled by the validator."
+
+policy:
+  external_calls_default: ask_user
+  destructive_changes_default: deny
+  secrets_access_default: deny
+  agent_framework_edits: allowed_with_explicit_user_request_and_migration_report
+  orchestrator_tools: read_search_delegate_only
+
+notes:
+  - "This repo intentionally keeps product/domain agents as optional template examples."
+  - "Do not import CIS product state, SDD paths, session logs, or domain artifacts."

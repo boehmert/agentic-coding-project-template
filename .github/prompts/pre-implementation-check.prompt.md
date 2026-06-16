@@ -1,158 +1,69 @@
 ---
-description: "Validate that a Workorder is ready for implementation"
+mode: agent
+description: "Validate a Workorder before implementation against scope, policy, risks, and AC evidence."
 tools:
-  - "codebase"
+  - "read"
   - "search"
   - "problems"
 ---
 
 # Pre-Implementation Check
 
-This prompt validates that a Workorder is ready for implementation before coding begins.
+Validate that a Workorder is ready for implementation before Developer starts.
 
----
+## Context to Load
 
-## Purpose
-
-Prevent the "70% problem" by ensuring:
-- Workorder is complete and clear
-- All prerequisites are met
-- Architecture is aligned
-- Risks are identified
-
----
-
-## Input
-
-- **Workorder ID**: ${input:woId:WO01}
-
----
+1. `context/STARTUP_BRIEF.md`
+2. `governance/project.profile.yaml`
+3. `governance/policy.yaml`
+4. `docs/agent-framework/workorder-quality-contract.md`
+5. The Workorder under review: ${input:woPath:workorders/WOxx_short-title.md}
+6. Relevant ADRs or referenced files
 
 ## Checklist
 
-### 1. Workorder Completeness
+### Workorder Completeness
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Goal is clear and measurable | ⬜ | |
-| Scope (in/out) is defined | ⬜ | |
-| Deliverables are concrete | ⬜ | |
-| Acceptance criteria are testable | ⬜ | |
-| Tests are specified | ⬜ | |
-| Definition of Done is complete | ⬜ | |
-| Effort estimate is provided | ⬜ | |
+- [ ] Goal is clear
+- [ ] Critical Path Fit is present for non-trivial work
+- [ ] In scope and out of scope are explicit
+- [ ] Deliverables are concrete
+- [ ] Requirements use stable IDs where needed
+- [ ] Every AC has evidence
+- [ ] Definition of Done is complete
+- [ ] Residual gaps are explicit or `none`
 
-### 2. Context Availability
+### Context and Dependencies
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| All referenced files exist | ⬜ | |
-| Dependent Workorders complete | ⬜ | |
-| Required schemas available | ⬜ | |
-| Test fixtures/data available | ⬜ | |
+- [ ] Referenced files exist or are intentionally new
+- [ ] Dependent Workorders are complete or explicitly not required
+- [ ] ADR/schema references are available
+- [ ] Test/validation commands are available
 
-### 3. Architecture Alignment
+### Policy and Risk
 
-| Check | Status | Notes |
-|-------|--------|-------|
-| Respects existing module structure | ⬜ | |
-| No circular dependencies | ⬜ | |
-| Follows naming conventions | ⬜ | |
-| Consistent with relevant ADRs | ⬜ | |
-| Security considerations addressed | ⬜ | |
+- [ ] Security/privacy/legal/external-call impacts are addressed or `N/A`
+- [ ] Policy gates are satisfied or marked as blocking
+- [ ] Destructive actions are absent or explicitly approved
+- [ ] No secrets or private paths are required
 
-### 4. Risk Assessment
-
-| Check | Status | Notes |
-|-------|--------|-------|
-| Breaking changes identified | ⬜ | |
-| Performance implications considered | ⬜ | |
-| Security implications reviewed | ⬜ | |
-| Rollback strategy known | ⬜ | |
-
----
-
-## Output Format
+## Output
 
 ```markdown
-## Pre-Implementation Check: ${woId}
+## Pre-Implementation Check: [Workorder]
 
-**Date:** {date}
-**Checked By:** reviewer
+**Gate:** GREEN | YELLOW | RED
 
-### Status: 🟢 GREEN | 🟡 YELLOW | 🔴 RED
+### Findings
+| # | Severity | Location | Finding | Remediation |
+|---|---|---|---|---|
 
-### Summary
-Brief assessment of readiness.
+### Evidence Checked
+- [...]
 
-### Checklist Results
+### Blockers
+- none | [...]
 
-#### Workorder Completeness: ✅ Pass / ⚠️ Issues / ❌ Fail
-- [x] Goal clear
-- [x] Scope defined
-- [ ] Tests specified (MISSING: integration tests)
-
-#### Context Availability: ✅ Pass / ⚠️ Issues / ❌ Fail
-- [x] Files exist
-- [x] Dependencies met
-
-#### Architecture Alignment: ✅ Pass / ⚠️ Issues / ❌ Fail
-- [x] Structure respected
-- [x] ADRs followed
-
-#### Risk Assessment: ✅ Pass / ⚠️ Issues / ❌ Fail
-- [x] Risks identified
-- [x] Mitigations documented
-
-### Blockers (if RED)
-1. [Specific blocker]
-2. [Specific blocker]
-
-### Caveats (if YELLOW)
-1. [Caveat with suggested mitigation]
-
-### Recommendations
-1. [Action before proceeding]
-2. [Thing to watch out for]
-
-### Verdict
-- 🟢 Ready to proceed
-- 🟡 Proceed with awareness of [caveats]
-- 🔴 Do not proceed until [blockers resolved]
+### Recommendation
+Ready to implement | Revise before implementation
 ```
-
----
-
-## Status Definitions
-
-### 🟢 GREEN - Ready
-- All checks pass
-- No blockers
-- Clear path forward
-
-### 🟡 YELLOW - Ready with Caveats
-- Minor issues that don't block
-- Proceed with awareness
-- Document caveats
-
-### 🔴 RED - Not Ready
-- Critical issues exist
-- Must resolve before implementation
-- List specific blockers
-
----
-
-## Workflow
-
-1. I will read the specified Workorder
-2. I will check each item in the checklist
-3. I will search codebase to verify context
-4. I will compile findings into the output format
-5. I will present the verdict and recommendations
-
----
-
-## Let's Start
-
-Please provide the Workorder ID to check.
-

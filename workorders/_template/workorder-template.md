@@ -1,82 +1,118 @@
 ---
-title: "<Workorder title>"
 id: WO-YYYY-NNN
-status: draft | active | done | cancelled
-owner: Your Name
+title: "<Workorder title>"
+version: 1.0.0
+status: PLANNED
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
-jira: ""
-confluence: ""
+created_by: workorder-planner
+reviewed_by: pending
+parent_spec: null
+priority: MEDIUM
+estimated_effort: "2-4 hours"
+workflow_mode: standard
 ---
 
-# Workorder: <Title>
+# WO-YYYY-NNN: <Title>
 
-## Context
+## 1. Context
 
-<!-- Why does this work exist? What triggered it? 1–3 sentences. -->
+Why does this work exist? What triggered it? Reference user request, decision,
+roadmap item, bug report, or template maintenance need.
 
-## Objective
+## 2. Goal
 
-<!-- What must be true when this work is done? Be specific. -->
+State the smallest valuable outcome.
 
-## Scope
+## 3. Critical Path Fit
 
-<!-- What is in scope. What is explicitly out of scope. -->
+**Source:** explicit user request | manifest item | roadmap item | decision ID
+**User/Template Value:** Who benefits and how?
+**Contribution:** Blocker removed | value delivered | risk reduced | delivery integrity preserved
+**If Not Done Now:** Cost of delay or why delay is acceptable
+**Not On Critical Path:** Explicit non-goals
 
-## Inputs
+## 4. Scope
 
-<!-- Files, documents, Jira issues, Confluence pages needed as input. -->
+### In Scope
 
-| # | Input | Location |
+- [ ] OUT-001:
+
+### Out of Scope
+
+- [ ] OOS-001:
+
+### Optional Suggestion Classification
+
+| Item | Classification | Decision |
 |---|---|---|
-| 1 | | |
+|  | critical_path | include |
 
-## Deliverables
+Allowed classifications: `critical_path`, `quality_bar`, `risk_reduction`,
+`roadmap_candidate`, `parking_lot`, `do_not_do_now`.
 
-<!-- Concrete outputs: files, decisions, Jira issues, Confluence pages. -->
+## 5. Requirements
 
-| # | Deliverable | Location | Format |
+| ID | Requirement | Notes |
+|---|---|---|
+| REQ-001 |  |  |
+
+## 6. Acceptance Criteria and Evidence
+
+| AC | Acceptance Criterion | Evidence | Owner |
 |---|---|---|---|
-| 1 | | | |
+| AC-001 |  | TEST-001 | developer |
 
-## Steps
+## 7. Evidence Plan
 
-<!-- Numbered steps. Keep granular enough to track progress. -->
+| ID | Evidence Type | Command / Checklist / Artifact |
+|---|---|---|
+| TEST-001 | smoke | `python3 tasks/validate-output/run.py` |
 
-- [ ] 1.
-- [ ] 2.
-- [ ] 3.
+## 8. Impact Review
 
-## Strategic Alignment
+| Area | Impact | Notes |
+|---|---|---|
+| Architecture | N/A |  |
+| Security | N/A |  |
+| Privacy / Personal Data | N/A |  |
+| Legal / Regulatory | N/A |  |
+| External Calls | N/A |  |
+| API / Schema | N/A |  |
+| Dependencies | N/A |  |
 
-**Related Workday Goal(s):**
-<!-- Select one or more: Goal 1 | Goal 2 | Goal 3 | Goal 4 | Goal 5
-     See /governance/workday-goals.md for full goal texts. -->
+## 9. Assumptions
 
-**Adoption:**
-<!-- How will this output be adopted by others? Who else will use it?
-     If only the team benefits: justify or reconsider scope. -->
+| ID | Assumption | Blocking? | Validation |
+|---|---|---|---|
+| ASM-001 |  | no |  |
 
-**Reuse:**
-<!-- Where is this output stored so it can be found and referenced again?
-     Preferred locations: output/specs/, output/reports/, shared prompt library, Confluence. -->
+## 10. Risks
 
-**Integration:**
-<!-- Which real workflow, Jira issue, or team process does this connect to?
-     An output is not done until it is connected to something real. -->
+| ID | Risk | Probability | Impact | Mitigation |
+|---|---|---|---|---|
+| RSK-001 |  | Medium | Medium |  |
 
-## Quality Check
+## 11. Dependencies
 
-<!-- Before closing this workorder, confirm: -->
+| Dependency | Status | Notes |
+|---|---|---|
+|  |  |  |
 
-- [ ] Output is factually correct and plausible
-- [ ] Domain terminology consistent (if applicable)
-- [ ] Usable by the intended audience without asking the team
-- [ ] Stored in the right location (output/, Confluence, Jira)
-- [ ] Linked to a Jira issue or planning document
+## 12. Definition of Done
 
-## Notes / Open Questions
+- [ ] All deliverables completed
+- [ ] All AC evidence collected
+- [ ] Relevant validation commands run
+- [ ] Reviewer gate completed
+- [ ] Docs/catalog/state updated if needed
+- [ ] Completion handoff or report created
 
-<!-- Anything not resolved above. -->
+## 13. Residual Gaps
 
+Write `none` if no known gaps remain.
 
+## Changelog
+
+| Version | Date | Author | Changes |
+|---|---|---|---|
+| 1.0.0 | YYYY-MM-DD | workorder-planner | Initial version |

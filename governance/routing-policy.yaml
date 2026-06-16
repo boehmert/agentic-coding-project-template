@@ -1,0 +1,170 @@
+version: 1
+updated: "2026-06-16"
+owner: orchestrator-lite
+
+workflow_modes:
+  lightweight:
+    description: "Small, local, reversible tasks."
+    default_agents:
+      - developer
+    optional_agents:
+      - reviewer
+      - documenter
+    required_artifacts:
+      - inline_contract_or_mini_workorder
+      - validation_evidence
+
+  standard:
+    description: "Normal template/framework work with explicit scope and acceptance criteria."
+    default_agents:
+      - workorder-planner
+      - developer
+      - reviewer
+    optional_agents:
+      - documenter
+      - architect
+    required_artifacts:
+      - workorder_or_explicit_user_request
+      - acceptance_criteria
+      - validation_evidence
+
+  high_risk:
+    description: "Security, privacy, legal, API/schema, infra, dependency, LLM/RAG, irreversible, or external-effect work."
+    default_agents:
+      - workorder-planner
+      - relevant_domain_triage
+      - developer
+      - reviewer
+    optional_agents:
+      - architect
+      - security-reviewer
+      - nadia-privacy-ciso
+      - jochen-legal-advisor
+      - felix-devops
+      - elena-ai-engineer
+      - lead-coordinator
+      - doublecheck
+    required_artifacts:
+      - workorder
+      - risk_assessment
+      - decision_id_if_required
+      - test_or_review_evidence
+
+  discovery:
+    description: "Divergent opportunity discovery before roadmap or specification."
+    default_agents:
+      - mira-visionary-discovery
+    optional_agents:
+      - arne-product-owner
+      - kai-data-analyst
+      - tom-growth
+      - david-customer-success
+      - sophie-ux-designer
+      - mia-content-strategist
+      - elena-ai-engineer
+    required_artifacts:
+      - opportunity_brief
+      - validation_hypothesis
+
+routing_rules:
+  local_bugfix_or_small_tooling_fix:
+    mode: lightweight
+    agents: [developer]
+    optional: [reviewer]
+
+  docs_update:
+    mode: lightweight
+    agents: [documenter]
+    optional: [reviewer]
+
+  agent_framework_update:
+    mode: standard
+    agents: [workorder-planner, developer, reviewer, documenter]
+    requires: [migration_report, validation_evidence]
+
+  new_template_feature:
+    mode: standard
+    agents: [workorder-planner, developer, reviewer]
+    optional: [documenter]
+
+  architecture_impact:
+    mode: high_risk
+    agents: [architect, workorder-planner, developer, reviewer]
+    requires: [adr_check]
+
+  api_or_schema_change:
+    mode: high_risk
+    agents: [architect, workorder-planner, developer, reviewer]
+    requires: [decision_id_if_policy_requires, rollback_plan]
+
+  security_sensitive:
+    mode: high_risk
+    agents: [security-reviewer]
+    requires: [security_review]
+
+  privacy_or_personal_data:
+    mode: high_risk
+    agents: [nadia-privacy-ciso, jochen-legal-advisor]
+    requires: [data_flow_check, decision_id_if_policy_requires]
+
+  legal_or_regulatory_claim:
+    mode: high_risk
+    agents: [jochen-legal-advisor, doublecheck]
+    requires: [source_evidence, human_signoff_if_binding]
+
+  llm_rag_agentic:
+    mode: high_risk
+    agents: [elena-ai-engineer]
+    optional: [nadia-privacy-ciso, architect]
+
+  infra_deployment_ci_cd:
+    mode: high_risk
+    agents: [felix-devops]
+    optional: [security-reviewer]
+
+  roadmap_discovery:
+    mode: discovery
+    agents: [mira-visionary-discovery]
+    optional: [arne-product-owner, kai-data-analyst]
+
+lead_coordinator_trigger:
+  call_only_when:
+    - affected_domains_count_gte_3
+    - domain_findings_conflict
+    - legal_privacy_security_business_tradeoff
+    - human_decision_needed_with_multiple_options
+    - user_explicitly_requests_synthesis
+  do_not_call_for:
+    - local_bugfix
+    - small_refactor
+    - routine_workorder_creation
+    - documentation_update
+    - direct_implementation_with_approved_workorder
+
+project_planner_trigger:
+  call_only_when:
+    - roadmap_changes
+    - milestone_sequence_changes
+    - dependencies_between_multiple_workorders_changed
+    - weekly_plan_health_check
+    - phase_boundary_reached
+  do_not_call_for:
+    - one_local_workorder_created
+    - bugfix_implemented
+    - docs_updated
+    - code_review_completed
+
+mira_trigger:
+  call_only_when:
+    - opportunity_discovery_requested
+    - roadmap_feels_too_incremental
+    - major_roadmap_shaping
+    - major_product_pivot
+    - large_capability_bet
+    - user_asks_what_we_are_missing
+  do_not_call_for:
+    - bugfix
+    - implementation_workorder
+    - code_review
+    - security_review
+    - approved_scope_execution

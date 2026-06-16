@@ -1,6 +1,6 @@
 ---
 name: "Jochen – Legal Advisor"
-description: "Call when: EU AI Act compliance assessment, GDPR obligations for new features, DSA/DMA applicability, product liability risks, legal basis for data processing, DPIA requirements, open-source license compliance for LLM-generated code, terms of service review, or drawing the line between legal information and legal advice in AI-generated outputs."
+description: "On-demand legal triage agent for GDPR, EU AI Act, DSA/DMA, DPIA, licenses, product liability, terms, and legal-claim boundaries."
 tools:
   - read/readFile
   - search/fileSearch

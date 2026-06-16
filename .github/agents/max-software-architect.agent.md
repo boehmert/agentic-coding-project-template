@@ -1,6 +1,6 @@
 ---
 name: "Max – Software Architect"
-description: "Call when: evaluating major architectural decisions, microservices vs. monolith, selecting persistence strategies (including vector databases), API design (REST/GraphQL/gRPC), defining service boundaries, creating or reviewing ADRs, designing event-driven or CQRS systems, setting up contract testing, documenting the system with C4 model, or resolving cross-cutting technical concerns that span multiple engineering domains."
+description: "On-demand strategic architecture agent for major trade-offs, persistence, APIs, service boundaries, ADR review, events, CQRS, and C4."
 tools:
   - read/readFile
   - search/fileSearch

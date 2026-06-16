@@ -11,6 +11,8 @@ This template serves two scenarios:
 **Scenario B — Existing project:** Copy the framework directories (`.github/`, `context/`, `workorders/`, `wiki/`) into an existing codebase. The framework is additive and does not interfere with application code.
 
 → See **[docs/SETUP.md](docs/SETUP.md)** for full setup instructions for both scenarios.
+For maintainers and AI agents changing the template itself, read
+**[docs/TEMPLATE_USAGE.md](docs/TEMPLATE_USAGE.md)**.
 
 ---
 
@@ -51,6 +53,11 @@ From the original [vibecoding-project-template](https://github.com/boehmert/vibe
 - **Goal alignment** — Copilot outputs aligned with annual objectives
 - **Writing style** — Configurable style guide for consistent output
 
+### Template Maintenance
+- **Usage contract** — `docs/TEMPLATE_USAGE.md` explains how to adopt, extend, and maintain the template
+- **Maintenance guardrails** — `.github/instructions/template-maintenance.instructions.md` keeps future agents aligned
+- **Policy-driven routing** — `governance/routing-policy.yaml`, `governance/policy.yaml`, and `context/STARTUP_BRIEF.md` keep agent activation token-aware and on-demand
+
 ---
 
 ## Quick Start
@@ -80,7 +87,7 @@ Copy `.github/`, `context/`, `governance/`, `workorders/`, `wiki/`, `COPILOT.md`
 ```
 .github/
 ├── copilot-instructions.md          # Global guardrails & routing
-├── instructions/                    # Path-scoped rules (~15 files)
+├── instructions/                    # Path-scoped rules
 │   ├── vibecoding-core.instructions.md
 │   ├── vibecoding-extended.instructions.md
 │   ├── spec-driven.instructions.md
@@ -88,7 +95,7 @@ Copy `.github/`, `context/`, `governance/`, `workorders/`, `wiki/`, `COPILOT.md`
 │   ├── wiki-provenance.instructions.md
 │   ├── vault-knowledge.instructions.md
 │   └── ...
-├── agents/                          # Specialized agents (12)
+├── agents/                          # Specialized agents
 │   ├── architect.agent.md
 │   ├── developer.agent.md
 │   ├── critical-thinker.agent.md
@@ -100,7 +107,7 @@ Copy `.github/`, `context/`, `governance/`, `workorders/`, `wiki/`, `COPILOT.md`
 │   ├── wiki-write.prompt.md
 │   ├── create-workorder.prompt.md
 │   └── ...
-├── skills/                          # Domain knowledge bundles (10)
+├── skills/                          # Domain knowledge bundles
 │   ├── ai-content-check/
 │   ├── document-pipeline/
 │   ├── schreibstil/
@@ -127,6 +134,9 @@ wiki/                                # Knowledge base
 └── agentic-coding/                  # Example articles
 
 governance/                          # Goals & tracking
+├── policy.yaml                       # Policy gates for risky actions
+├── project.profile.yaml              # Repo-specific agent framework profile
+├── routing-policy.yaml               # Workflow mode and agent routing policy
 ├── workday-goals.md
 └── activity-log.md
 
@@ -208,6 +218,12 @@ Context persists across conversations via memory system.
 ### Customize Goals
 1. Edit `governance/workday-goals.md` with your annual goals
 2. The activity log at `governance/activity-log.md` tracks progress automatically
+
+### Maintain the Template
+1. Read `docs/TEMPLATE_USAGE.md` before changing framework artifacts
+2. Start from `context/STARTUP_BRIEF.md`, `governance/routing-policy.yaml`, and `governance/policy.yaml`
+3. Keep `README.md`, `AGENTS.md`, `ARCHITECTURE.md`, `.github/FRAMEWORK_MANIFEST.md`, and `CHANGELOG.md` in sync
+4. Run the template quality gates before handoff
 
 ---
 

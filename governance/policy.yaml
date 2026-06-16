@@ -1,0 +1,128 @@
+version: 1
+updated: "2026-06-16"
+owner: human
+
+principles:
+  - "Policy beats persona."
+  - "AI concurrence is not independent assurance."
+  - "Use the smallest safe workflow mode."
+  - "No risky side effect without explicit approval or policy coverage."
+  - "Prefer containment and least privilege over blanket approvals."
+
+actions:
+  read_file:
+    default: allow
+
+  search_codebase:
+    default: allow
+
+  edit_agent_framework:
+    default: allow
+    requires:
+      - explicit_user_request
+      - migration_plan
+      - migration_report
+      - validation_evidence
+
+  edit_docs_or_reports:
+    default: allow
+    requires:
+      - workorder_id_or_explicit_user_request
+
+  edit_source_file_in_workorder_scope:
+    default: allow
+    requires:
+      - workorder_id_or_explicit_user_request
+      - file_in_scope
+
+  edit_source_file_outside_workorder_scope:
+    default: ask_user
+    requires:
+      - reason
+      - updated_workorder_or_decision_id
+
+  edit_api_contract:
+    default: ask_user
+    requires:
+      - decision_id
+      - adr_check
+      - review_gate
+
+  edit_schema_or_data_model:
+    default: ask_user
+    requires:
+      - decision_id
+      - migration_plan
+      - rollback_plan
+
+  add_dependency:
+    default: ask_user
+    requires:
+      - security_review
+      - license_check
+      - decision_id
+
+  modify_auth_or_authorization:
+    default: ask_user
+    requires:
+      - security_review
+      - decision_id
+
+  process_personal_data_new_flow:
+    default: ask_user
+    requires:
+      - privacy_triage
+      - legal_triage
+      - decision_id
+
+  access_secret:
+    default: deny
+
+  create_or_modify_ci_cd:
+    default: ask_user
+    requires:
+      - devops_review
+      - security_review_if_secrets_or_deployments
+      - decision_id
+
+  run_destructive_command:
+    default: deny
+
+  merge_to_main:
+    default: ask_user
+    requires:
+      - reviewer_green_gate
+      - tests_passed
+      - integrator
+
+  external_communication_or_third_party_action:
+    default: ask_user
+    requires:
+      - explicit_user_confirmation
+
+  external_network_call:
+    default: ask_user
+    requires:
+      - reason
+      - data_scope
+      - explicit_user_confirmation
+
+data_handling:
+  secrets:
+    persist_in_repo: deny
+    include_in_reports: deny
+    include_in_logs: deny
+
+  sensitive_raw_content:
+    persist_without_policy_and_approval: deny
+    summarize_when_possible: true
+
+review_counting:
+  same_model_same_context:
+    counts_as: "one_correlated_ai_review"
+  different_evidence_package:
+    counts_as: "partially_independent_signal"
+  deterministic_tool:
+    counts_as: "independent_signal"
+  qualified_human_approval:
+    counts_as: "formal_approval"

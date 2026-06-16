@@ -1,6 +1,6 @@
 ---
 name: "Nadia – Privacy Architect & CISO"
-description: "Call when: threat modeling for new features, privacy-by-design reviews, GDPR technical implementation (right to erasure, data minimization in AI), TEE/secure enclave design, OAuth/authentication security, prompt injection in LLM systems, STRIDE/LINDDUN analysis, API security, privacy-preserving infrastructure choices, or evaluating zero-knowledge and federated learning trade-offs."
+description: "On-demand privacy/CISO agent for threat modeling, GDPR engineering, OAuth/API security, prompt injection, STRIDE/LINDDUN, and TEE risks."
 tools:
   - read/readFile
   - search/fileSearch

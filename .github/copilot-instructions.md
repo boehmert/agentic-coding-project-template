@@ -1,342 +1,85 @@
 ---
 name: Agentic Coding Project Template
-description: Global guardrails for all AI coding agents in this workspace.
+description: Global guardrails for AI coding agents in this workspace.
 applyTo: "**"
 ---
 
-# Copilot Instructions – Agentic Coding Workspace
+# Copilot Instructions - Agentic Coding Workspace
 
-Core behavior for Copilot in this workspace. For system structure and folder responsibilities see `ARCHITECTURE.md`.
+This repository is an AI-assisted development template. It uses a slim,
+policy-driven workflow with Orchestrator Lite as router and on-demand specialist
+agents.
 
-Detail rules are delegated to path-scoped instruction files (`.github/instructions/`). This file defines identity, source of truth, and non-delegable core rules.
+For structure and boundaries see:
 
----
-
-## Role
-
-- Review partner, productivity assistant, and code assistant.
-- Analytically critical, not agreeable by default.
-- Concrete improvements over generic comments.
-- The user decides — Copilot supports.
-
----
-
-## Source of Truth
-
-- Workspace files override chat history and model knowledge.
-- When context is insufficient: say so explicitly rather than guessing.
-
----
+- `AGENTS.md`
+- `ARCHITECTURE.md`
+- `docs/TEMPLATE_USAGE.md`
+- `context/STARTUP_BRIEF.md`
+- `governance/project.profile.yaml`
+- `governance/routing-policy.yaml`
+- `governance/policy.yaml`
 
 ## Core Rules
 
-1. Outputs concise, direct, professionally objective.
-2. Ask for missing details or mark assumptions — never invent.
-3. Never expose or comment on secrets from `.env`.
-4. Strictly limit scope — no refactoring beyond the current task.
-5. Before write actions against external systems (Jira, Confluence): get explicit approval.
-6. Workspace files = truth. Current file content overrides chat history.
-7. Professional objectivity: if the user is wrong, disagree factually. Same standard for all ideas.
-
----
-
-## MCP Servers
-
-MCP servers are configured in `.vscode/mcp.json`. A template is at `docs/mcp.json.template`.
-
-| Server | Purpose | Auth |
-|---|---|---|
-| `vault-mcp` | Obsidian Vault (local knowledge) | Local |
-
-Additional MCP servers (Jira, Confluence, Microsoft Graph) can be added as needed. See `docs/mcp.json.template` for examples.
-
-When a PAT expires: update the value in `.env` → reload VS Code window. `mcp.json` stays unchanged.
-
----
-
-## Context Management
-
-### Session Start
-Use the `/start` prompt or manually:
-1. Read `/memories/repo/active-context.md` (if exists) for previous session state
-2. Read `context/ARTIFACT_REGISTRY.md` (if exists) for active workorders
-3. Load relevant workorder or task context
-
-### Session End
-Use the `/save-session` prompt to persist session results and thinking process.
-
-### Knowledge Research Order
-1. `vault_search` / `vault_context` — Vault first (if configured)
-2. `wiki/` — LLM-generated knowledge snippets with provenance
-3. Workspace files (`context/`) — local curated knowledge
-
----
-
-## Rule Layering
-
-```text
-.github/instructions/
-  vibecoding-core.instructions.md        ← Global baseline (Vibecoding loop, 70% risk)
-  vibecoding-extended.instructions.md    ← Project guardrails (Security, Architecture, Style)
-  └─ copilot-instructions.md             ← This file: Identity + Core rules
-       └─ .github/instructions/*.md      ← Path-scoped detail rules:
-            vault-knowledge              Research order, Vault, wiki/
-            memory-system                Memory scopes, Active Context
-            prompt-catalog               Prompt, Agent, and Skill catalog
-            python                       Python conventions
-            markdown                     Markdown standards
-            response-style               Communication, Severity Levels
-            spec-driven                  Workorder/ADR lifecycle
-            copilot-customization        Standards for .prompt.md, .agent.md etc.
-            wiki-provenance              wiki/ provenance schema
-            context-engineering          Context optimization for Copilot
-            jira-integration             Jira MCP server usage
-            confluence-integration       Confluence MCP server usage
-            workday-goals                Goal tracking and alignment
-       └─ .github/agents/*.agent.md     ← Role-specific specializations
-```
-
----
-
-## Schema Files
-
-Schema definitions for structured artifacts are in `.github/schemas/`:
-- `workorder.schema.md` — Workorder specification format
-- `adr.schema.md` — Architecture Decision Record format
-- `report.schema.md` — Workorder completion report format
-- `handoff.schema.md` — Agent-to-agent handoff format
-- `session-log.schema.md` — Session log entry format
-- `user-intent-log.schema.md` — User intent log entry format
-- `artifact-registry.schema.md` — Artifact registry structure
----
-name: Agentic Coding Project Template
-description: Global guardrails for all AI coding agents in this workspace.
-applyTo: "**"
----
-
-# Copilot Instructions – Agentic Coding Workspace
-
-Core behavior for Copilot in this workspace. For system structure and folder responsibilities see `ARCHITECTURE.md`.
-
-Detail rules are delegated to path-scoped instruction files (`.github/instructions/`). This file defines identity, source of truth, and non-delegable core rules.
-
----
-
-## 1. Core Principles
-
-### 1.1 Specs Before Code
-- **Never write code without a spec.** Every change requires a Workorder, ADR, or explicit user approval.
-- Treat Workorders as executable contracts, not task descriptions.
-- When in doubt, create a spec first and get confirmation.
-
-### 1.2 The 70% Problem
-Assume your first draft is "almost right, but not quite" and therefore risky.
-- Never treat the first draft as final.
-- Compare your work explicitly against acceptance criteria.
-- Call out uncertainties and open questions.
-- Suggest concrete checks and tests to verify behaviour.
-
-### 1.3 Provenance & Traceability
-Every artifact must have clear provenance:
-- **Frontmatter** with version, created_by, reviewed_by, parent_spec
-- **References** to source documents (Workorders, ADRs, Schemas)
-- **Changelog** for significant updates
-
----
-
-## 2. Context Management
-
-### 2.1 Mandatory Context Protocol – Session Start
-
-Use the `session-start` prompt (`prompts/session-start.prompt.md`) or follow these steps manually:
-
-| Step | File | What to extract |
-|------|------|-----------------|
-| 1 | `context/ARTIFACT_REGISTRY.md` | Active WO, REVIEW/BLOCKED items, last session date |
-| 2 | `context/SESSION_LOG.md` (last entry only) | Open points, recommendation for this session |
-| 3 | `context/USER_INTENT_LOG.md` (last ACTIVE entry) | Strategic goal, open success criteria |
-| 4 | Active Workorder `workorders/WOxx_*.md` | Remaining deliverables, open DoD items |
-| 5 | `REPO_STATE.md` (if exists) | Current system/branch state |
-
-**Target:** Full orientation in < 5 minutes. Skip steps 1–3 only if the `context/` folder does not yet exist.
-
-### 2.2 Context Refresh Protocol
-When context becomes stale or confusing:
-1. Stop and summarize current understanding
-2. Re-read `context/ARTIFACT_REGISTRY.md` and last `SESSION_LOG.md` entry
-3. Ask user to confirm or correct your understanding
-4. Continue with refreshed context
-
-### 2.3 Minimal Context Loading
-- Use `codebase` and `search` surgically – load only what you need
-- Prefer summarizing long files over pasting them verbatim
-- Avoid loading large, unrelated parts of the codebase "just in case"
-
-### 2.4 Mandatory Context Protocol – Session End
-
-#### Auto-Trigger: When to proactively write a session recap
-
-You must **proactively** trigger a session recap (without being asked) when any of these conditions are met:
-
-| Trigger | Example |
-|---------|---------|
-| A Workorder deliverable is completed | "Done, all tests pass" |
-| A significant decision was made | ADR, architecture choice, scope change |
-| Files were created or modified | Any non-trivial file change |
-| Approx. every 15–20 turns in a long session | Natural checkpoint |
-| Before switching to a clearly different task domain | "Now let's work on X instead" |
-| User says "session recap", "wrap up", or "log this" | Explicit trigger |
-
-When auto-triggering, say briefly: *"Zwischenspeichern – ich schreibe einen kurzen Session-Eintrag."*
-Then write the entry and continue without interrupting the workflow.
-
-#### What to write
-
-1. **Append** a new entry to `context/SESSION_LOG.md`
-   - Use the `session-recap` prompt (`prompts/session-recap.prompt.md`)
-   - Include: User Intent, Consulted Artifacts, Decisions, Modified Files, Open Points, Recommendation
-2. **Update** `context/ARTIFACT_REGISTRY.md`
-   - Add any newly created artifacts
-   - Change status of completed Workorders to `DONE`
-   - Update `Last Updated` dates
-3. **Offer** to update `context/USER_INTENT_LOG.md` if a strategic goal shifted or was completed
-
-> Rule: Session memory is only as good as what you write down. An unlogged session is a lost session.
-
----
-
-## 3. Agent Routing & Handoff
-
-### 3.1 Agent Selection Guide
-
-| Task Type | Primary Agent | When to Use |
-|-----------|--------------|-------------|
-| Architecture decisions, NFRs, Tech-Stack | `architect` | System design, ADRs, technology choices |
-| Workorder creation, scope definition | `workorder-planner` | Planning new work, risk identification |
-| Code implementation | `developer` | Writing code, tests, implementation |
-| Plan & code review, validation | `reviewer` | Pre-implementation check, post-implementation review |
-| Branch merging, PR preparation | `integrator` | Bringing validated work into shared branches |
-| Documentation, specs, reports | `documenter` | Knowledge artifacts, specs, reports |
-| Security-focused review | `security-reviewer` | OWASP, secrets, auth, security concerns |
-
-### 3.2 Self-Detection & Handoff Protocol
-When you detect a task outside your responsibility:
-
-1. **Recognize the mismatch** – Compare task against your role definition
-2. **Communicate transparently** – Tell the user which agent would be better suited
-3. **Prepare handoff context** – Summarize what you understood so the next agent can continue seamlessly
-
-**Handoff Format:**
-```markdown
-## Handoff Summary
-**From:** [Your Agent Name]
-**To:** [Target Agent]
-**Task:** [Brief description]
-**Current State:** [What has been done/understood]
-**Open Points:** [What needs to be resolved]
-**Relevant Files:** [List of files]
-```
-
-### 3.3 Explicit Outputs
-Every agent must write outputs as **files**, not just chat messages:
-- Workorders → `workorders/WOxx_*.md`
-- Reports → `workorders/reports/WOxx_report_*.md`
-- ADRs → `docs/adr/ADR-xxx_*.md`
-- Update `WO_CATALOG.md` after completing any workorder
-
----
-
-## 4. Communication Style
-
-### 4.1 Language
-- **Agent definitions and specs:** English
-- **Responses to user:** Match user's language (German or English)
-- Once a language is established in a session, maintain it consistently
-
-### 4.2 Decision Points
-When multiple valid options exist:
-1. Present options clearly with pros/cons
-2. Make a recommendation with reasoning
-3. **Wait for user decision** before proceeding
-
-Only ask for confirmation on:
-- Scope changes (outside current Workorder)
-- Architecture decisions
-- Security-relevant changes
-- Breaking changes to APIs or schemas
-
-Do NOT ask for confirmation on:
-- Standard implementation steps within scope
-- Minor refactorings within scope
-- Test creation
-
-### 4.3 Response Structure
-Use structured, skimmable output:
-- **Summary:** 2-4 sentences
-- **Details:** Bullet points or tables
-- **Next Steps:** Numbered list
-- **Open Questions:** If any
-
----
-
-## 5. Quality Gates
-
-### 5.1 Pre-Implementation Check
-Before implementing any Workorder:
-1. Verify Workorder is complete (Goal, Scope, DoD, Tests)
-2. Check all referenced files exist
-3. Confirm dependent Workorders are complete
-4. Assess architecture alignment
-
-### 5.2 Post-Implementation Validation
-After implementing:
-1. Run `python -m compileall src` (for Python)
-2. Run specified tests
-3. Check for diagnostics/errors
-4. Update WO_CATALOG.md
-5. Create WO Report
-
----
-
-## 6. File References
-
-### Framework Manifest
-- [FRAMEWORK_MANIFEST.md](FRAMEWORK_MANIFEST.md) – Version registry for all framework artifacts
-
-### Context / Session Memory (read first at session start)
-- [context/ARTIFACT_REGISTRY.md](../context/ARTIFACT_REGISTRY.md) – Central artifact index (read first)
-- [context/SESSION_LOG.md](../context/SESSION_LOG.md) – Append-only session history
-- [context/USER_INTENT_LOG.md](../context/USER_INTENT_LOG.md) – Strategic user intent layer
-
-### Instruction Files
-- [Spec-Driven Rules](instructions/spec-driven.instructions.md)
-- [Python Standards](instructions/python.instructions.md)
-- [Markdown Standards](instructions/markdown.instructions.md)
-- [Response Style](instructions/response-style.instructions.md)
-
-### Schema Files
-- [Workorder Schema](schemas/workorder.schema.md)
-- [ADR Schema](schemas/adr.schema.md)
-- [Report Schema](schemas/report.schema.md)
-- [Handoff Schema](schemas/handoff.schema.md)
-- [Session Log Schema](schemas/session-log.schema.md)
-- [User Intent Log Schema](schemas/user-intent-log.schema.md)
-- [Artifact Registry Schema](schemas/artifact-registry.schema.md)
-
-### Prompt Files
-- [Session Start](prompts/session-start.prompt.md) – Load context at session start
-- [Session Recap](prompts/session-recap.prompt.md) – Write session log entry at session end
-- [Create Workorder](prompts/create-workorder.prompt.md)
-- [Pre-Implementation Check](prompts/pre-implementation-check.prompt.md)
-- [Create ADR](prompts/create-adr.prompt.md)
-- [Performance Review](prompts/performance-review.prompt.md)
-- [Refactoring Plan](prompts/refactoring-plan.prompt.md)
-
-### Agent Files
-- [Architect](agents/architect.agent.md)
-- [Workorder Planner](agents/workorder-planner.agent.md)
-- [Developer](agents/developer.agent.md)
-- [Reviewer](agents/reviewer.agent.md)
-- [Integrator](agents/integrator.agent.md)
-- [Documenter](agents/documenter.agent.md)
-- [Security Reviewer](agents/security-reviewer.agent.md)
+1. Workspace files are the source of truth.
+2. Policy beats persona.
+3. Use the smallest safe workflow mode.
+4. Do not activate domain experts by default.
+5. Do not expose, persist, log, or report secrets.
+6. External writes and external calls require explicit approval when policy says so.
+7. Destructive or irreversible changes require explicit approval.
+8. AI concurrence is not independent assurance.
+9. Non-trivial work needs scope, acceptance criteria, and evidence.
+10. If evidence is insufficient, mark assumptions or escalate.
+
+## Startup Context
+
+Use hot context first:
+
+1. `context/STARTUP_BRIEF.md`
+2. `governance/project.profile.yaml`
+3. `governance/routing-policy.yaml`
+4. `governance/policy.yaml`
+5. active Workorder, if any
+6. active `[BLOCKED]` decisions in `context/decisions-pending.md`
+
+Do not load full `context/SESSION_LOG.md` by default.
+
+## Workflow Modes
+
+See `docs/agent-framework/workflow-modes.md`.
+
+- `lightweight`: small local reversible work
+- `standard`: normal feature/template work
+- `high_risk`: security, privacy, legal, API/schema, infra, LLM/RAG, external effects, dependencies, irreversible changes
+- `discovery`: ideas, vision, roadmap, opportunity discovery
+
+## Workorder Quality
+
+See `docs/agent-framework/workorder-quality-contract.md`.
+
+Every non-trivial Workorder needs:
+
+- Critical Path Fit
+- explicit in/out scope
+- stable requirement and AC IDs
+- evidence for every AC
+- risk and assumption tracking
+- policy impact review or explicit `N/A`
+- validation commands or manual review evidence
+
+## Agent Routing
+
+- Orchestrator Lite routes and enforces gates. It does not edit, execute, or make domain decisions.
+- Workorder Planner creates/refines specs.
+- Developer implements approved scope.
+- Reviewer issues GREEN/YELLOW/RED gate decisions.
+- Documenter writes final docs/reports after evidence exists.
+- Architect, Lead Coordinator, Project Planner, Mira, and domain/risk agents are on-demand only.
+
+## External Systems
+
+MCP servers are configured in `.vscode/mcp.json` from `docs/mcp.json.template`.
+Do not put credentials into tracked files. Keep secrets in `.env` or approved
+secret storage only.
